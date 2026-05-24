@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { MarketingHeader, MarketingFooter } from "@/components/MarketingShell";
 import {
   HardHat,
   ShieldCheck,
@@ -10,11 +11,11 @@ import {
   CheckCircle2,
   AlertTriangle,
   Calculator,
-  Ruler,
   ClipboardCheck,
   Landmark,
   Ticket,
 } from "lucide-react";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
