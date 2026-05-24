@@ -70,18 +70,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Build Connect SA — KZN Construction Marketplace & Escrow" },
+      { title: "Build Connect PRO SA — Construction Marketplace & Escrow" },
       {
         name: "description",
         content:
           "KwaZulu-Natal's tiered construction marketplace with TradeSafe escrow, milestone management, and closed-loop supplier vouchers.",
       },
-      { property: "og:title", content: "Build Connect SA" },
+      { property: "og:title", content: "Build Connect PRO SA — Construction Marketplace & Escrow" },
       {
         property: "og:description",
         content: "Secure construction project management for KZN.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "Build Connect PRO SA — Construction Marketplace & Escrow" },
+      { name: "description", content: "Project Harmony is a B2B2C construction marketplace and project management web application." },
+      { property: "og:description", content: "Project Harmony is a B2B2C construction marketplace and project management web application." },
+      { name: "twitter:description", content: "Project Harmony is a B2B2C construction marketplace and project management web application." },
+      { name: "twitter:card", content: "summary" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
