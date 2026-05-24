@@ -15,6 +15,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as ConstructionSlugRouteImport } from './routes/construction.$slug'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedDashboardSupplierRouteImport } from './routes/_authenticated/dashboard.supplier'
@@ -52,6 +53,11 @@ const IndexRoute = IndexRouteImport.update({
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/services/$slug',
   path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalSlugRoute = LegalSlugRouteImport.update({
+  id: '/legal/$slug',
+  path: '/legal/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConstructionSlugRoute = ConstructionSlugRouteImport.update({
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/construction/$slug': typeof ConstructionSlugRoute
+  '/legal/$slug': typeof LegalSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/construction/$slug': typeof ConstructionSlugRoute
+  '/legal/$slug': typeof LegalSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
@@ -148,6 +156,7 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/construction/$slug': typeof ConstructionSlugRoute
+  '/legal/$slug': typeof LegalSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/_authenticated/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
@@ -166,6 +175,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/dashboard'
     | '/construction/$slug'
+    | '/legal/$slug'
     | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/builder'
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/dashboard'
     | '/construction/$slug'
+    | '/legal/$slug'
     | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/builder'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/_authenticated/dashboard'
     | '/construction/$slug'
+    | '/legal/$slug'
     | '/services/$slug'
     | '/_authenticated/dashboard/admin'
     | '/_authenticated/dashboard/builder'
@@ -216,6 +228,7 @@ export interface RootRouteChildren {
   OnboardingRoute: typeof OnboardingRoute
   SignupRoute: typeof SignupRoute
   ConstructionSlugRoute: typeof ConstructionSlugRoute
+  LegalSlugRoute: typeof LegalSlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
@@ -261,6 +274,13 @@ declare module '@tanstack/react-router' {
       path: '/services/$slug'
       fullPath: '/services/$slug'
       preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/$slug': {
+      id: '/legal/$slug'
+      path: '/legal/$slug'
+      fullPath: '/legal/$slug'
+      preLoaderRoute: typeof LegalSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/construction/$slug': {
@@ -390,6 +410,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnboardingRoute: OnboardingRoute,
   SignupRoute: SignupRoute,
   ConstructionSlugRoute: ConstructionSlugRoute,
+  LegalSlugRoute: LegalSlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
