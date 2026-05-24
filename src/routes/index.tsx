@@ -117,6 +117,96 @@ function Hero() {
   );
 }
 
+function ProblemSection() {
+  const pains = [
+    "Unvetted contractors who disappear with deposits",
+    "Sudden cost escalations & untracked variations",
+    "Half-finished work and abandoned sites",
+    "Structural non-compliance that fails SANS inspections",
+  ];
+  return (
+    <section className="border-b border-border/60 bg-card/30 py-20">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-destructive/30 bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive">
+            <AlertTriangle className="h-3.5 w-3.5" /> The construction risk problem
+          </div>
+          <h2 className="mt-6 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            Other platforms hand you a list of numbers.
+            <br />
+            <span className="text-gradient-amber">We hand you a team.</span>
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Building and renovating in South Africa is notoriously high-risk. Lum Tech Pro SA
+            eliminates that risk by embedding professional oversight and escrow into every project —
+            so property owners and developers stay protected from start to handover.
+          </p>
+        </div>
+        <ul className="space-y-3">
+          {pains.map((p) => (
+            <li key={p} className="flex items-start gap-3 rounded-lg border border-border bg-card/60 p-4">
+              <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
+              <span className="text-sm text-muted-foreground">{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+const PILLARS = [
+  {
+    icon: Calculator,
+    title: "Built-in QS & Engineers",
+    body: "Integrated Quantity Surveyors verify your Bill of Quantities and market rates. Registered Engineers conduct phase inspections so every stage meets National Building Regulations.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Milestone-driven project management",
+    body: "Every build is broken into transparent phases — foundation, brickwork, roofing, finishes. Contractors submit proof; our professionals sign off digitally before money moves.",
+  },
+  {
+    icon: Landmark,
+    title: "TradeSafe Escrow protection",
+    body: "Project funds sit in an audited TradeSafe Escrow account (backed by Standard Bank). Money releases only after a QS or Engineer certifies the milestone.",
+  },
+  {
+    icon: Ticket,
+    title: "Voucher & incentive ledger",
+    body: "Corporate clients, housing funds and partners distribute pre-funded construction credits that streamline material procurement and subsidise verified local projects.",
+  },
+];
+
+function PillarsSection() {
+  return (
+    <section id="pillars" className="border-b border-border/60 py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="max-w-2xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            Four pillars holding up every project.
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            You don't just hire a contractor — you hire an ecosystem engineered to deliver compliant,
+            on-budget, structurally sound work.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {PILLARS.map((p) => (
+            <div key={p.title} className="rounded-xl border border-border bg-card p-6 transition hover:border-primary/40">
+              <div className="grid h-11 w-11 place-items-center rounded-md bg-primary/15 text-primary">
+                <p.icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-display text-lg font-semibold">{p.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="border-l-2 border-primary/60 pl-4">
