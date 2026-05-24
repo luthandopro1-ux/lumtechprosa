@@ -15,6 +15,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as ConstructionSlugRouteImport } from './routes/construction.$slug'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedDashboardSupplierRouteImport } from './routes/_authenticated/dashboard.supplier'
 import { Route as AuthenticatedDashboardProfessionalRouteImport } from './routes/_authenticated/dashboard.professional'
@@ -51,6 +52,11 @@ const IndexRoute = IndexRouteImport.update({
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/services/$slug',
   path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstructionSlugRoute = ConstructionSlugRouteImport.update({
+  id: '/construction/$slug',
+  path: '/construction/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
@@ -107,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/construction/$slug': typeof ConstructionSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
@@ -122,6 +129,7 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/construction/$slug': typeof ConstructionSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
@@ -139,6 +147,7 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/construction/$slug': typeof ConstructionSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/_authenticated/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/dashboard'
+    | '/construction/$slug'
     | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/builder'
@@ -171,6 +181,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/dashboard'
+    | '/construction/$slug'
     | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/builder'
@@ -187,6 +198,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/_authenticated/dashboard'
+    | '/construction/$slug'
     | '/services/$slug'
     | '/_authenticated/dashboard/admin'
     | '/_authenticated/dashboard/builder'
@@ -203,6 +215,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
   SignupRoute: typeof SignupRoute
+  ConstructionSlugRoute: typeof ConstructionSlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
@@ -248,6 +261,13 @@ declare module '@tanstack/react-router' {
       path: '/services/$slug'
       fullPath: '/services/$slug'
       preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/construction/$slug': {
+      id: '/construction/$slug'
+      path: '/construction/$slug'
+      fullPath: '/construction/$slug'
+      preLoaderRoute: typeof ConstructionSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/dashboard': {
@@ -369,6 +389,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
   SignupRoute: SignupRoute,
+  ConstructionSlugRoute: ConstructionSlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
