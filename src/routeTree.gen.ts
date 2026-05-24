@@ -12,8 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
+import { Route as ConstructionSlugRouteImport } from './routes/construction.$slug'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedDashboardSupplierRouteImport } from './routes/_authenticated/dashboard.supplier'
 import { Route as AuthenticatedDashboardProfessionalRouteImport } from './routes/_authenticated/dashboard.professional'
@@ -38,6 +42,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedRoute = AuthenticatedRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
@@ -45,6 +54,21 @@ const AuthenticatedRoute = AuthenticatedRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services/$slug',
+  path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalSlugRoute = LegalSlugRouteImport.update({
+  id: '/legal/$slug',
+  path: '/legal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstructionSlugRoute = ConstructionSlugRouteImport.update({
+  id: '/construction/$slug',
+  path: '/construction/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
@@ -97,10 +121,14 @@ const AuthenticatedDashboardClientProjectsNewRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/construction/$slug': typeof ConstructionSlugRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
@@ -111,10 +139,14 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/construction/$slug': typeof ConstructionSlugRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
@@ -127,10 +159,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/construction/$slug': typeof ConstructionSlugRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/_authenticated/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/_authenticated/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
@@ -143,10 +179,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contact'
     | '/login'
     | '/onboarding'
     | '/signup'
     | '/dashboard'
+    | '/construction/$slug'
+    | '/legal/$slug'
+    | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/builder'
     | '/dashboard/client'
@@ -157,10 +197,14 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
     | '/login'
     | '/onboarding'
     | '/signup'
     | '/dashboard'
+    | '/construction/$slug'
+    | '/legal/$slug'
+    | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/builder'
     | '/dashboard/client'
@@ -172,10 +216,14 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/contact'
     | '/login'
     | '/onboarding'
     | '/signup'
     | '/_authenticated/dashboard'
+    | '/construction/$slug'
+    | '/legal/$slug'
+    | '/services/$slug'
     | '/_authenticated/dashboard/admin'
     | '/_authenticated/dashboard/builder'
     | '/_authenticated/dashboard/client'
@@ -188,9 +236,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  ContactRoute: typeof ContactRoute
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
   SignupRoute: typeof SignupRoute
+  ConstructionSlugRoute: typeof ConstructionSlugRoute
+  LegalSlugRoute: typeof LegalSlugRoute
+  ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -216,6 +268,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated': {
       id: '/_authenticated'
       path: ''
@@ -228,6 +287,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/$slug': {
+      id: '/legal/$slug'
+      path: '/legal/$slug'
+      fullPath: '/legal/$slug'
+      preLoaderRoute: typeof LegalSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/construction/$slug': {
+      id: '/construction/$slug'
+      path: '/construction/$slug'
+      fullPath: '/construction/$slug'
+      preLoaderRoute: typeof ConstructionSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/dashboard': {
@@ -346,9 +426,13 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
+  ContactRoute: ContactRoute,
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
   SignupRoute: SignupRoute,
+  ConstructionSlugRoute: ConstructionSlugRoute,
+  LegalSlugRoute: LegalSlugRoute,
+  ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

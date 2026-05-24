@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { MarketingHeader, MarketingFooter } from "@/components/MarketingShell";
 import {
   HardHat,
   ShieldCheck,
@@ -10,11 +11,11 @@ import {
   CheckCircle2,
   AlertTriangle,
   Calculator,
-  Ruler,
   ClipboardCheck,
   Landmark,
   Ticket,
 } from "lucide-react";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,7 +34,7 @@ export const Route = createFileRoute("/")({
 function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Header />
+      <MarketingHeader />
       <Hero />
       <ProblemSection />
       <PillarsSection />
@@ -41,41 +42,11 @@ function Landing() {
       <HowItWorks />
       <RolesSection />
       <CTA />
-      <Footer />
+      <MarketingFooter />
     </div>
   );
 }
 
-function Header() {
-  return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-amber shadow-glow">
-            <HardHat className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="font-display text-lg font-bold tracking-tight">
-            LUM TECH PRO <span className="text-primary">SA</span>
-          </span>
-        </Link>
-        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-          <a href="#pillars" className="hover:text-foreground">Why us</a>
-          <a href="#tiers" className="hover:text-foreground">Tiers</a>
-          <a href="#how-it-works" className="hover:text-foreground">How it works</a>
-          <a href="#roles" className="hover:text-foreground">Who it's for</a>
-        </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/login">Sign in</Link>
-          </Button>
-          <Button asChild size="sm">
-            <Link to="/signup">Get started</Link>
-          </Button>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 function Hero() {
   return (
@@ -401,75 +372,5 @@ function CTA() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="border-t border-border/60 bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-        {/* Brand header */}
-        <div className="border-b border-border/60 pb-6">
-          <h3 className="font-display text-xl font-bold tracking-tight">LUM TECH PRO SA</h3>
-          <p className="mt-1 text-sm text-muted-foreground">Professional Building & Construction Managed Marketplace</p>
-        </div>
 
-        {/* Link columns */}
-        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <h4 className="text-sm font-semibold">Professional Services</h4>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>Quantity Surveying</li>
-              <li>Structural Engineering</li>
-              <li>Project Management</li>
-              <li>Compliance & Permits</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold">Construction</h4>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>Residential Reno</li>
-              <li>Commercial Builds</li>
-              <li>Contractor Vetting</li>
-              <li>Material Vouchers</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold">Legal</h4>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>Terms of Service</li>
-              <li>Privacy Policy (POPIA)</li>
-              <li>Escrow Agreement</li>
-              <li>SANS Compliance</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold">Contact</h4>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>Support Desk</li>
-              <li>Johannesburg</li>
-              <li>Durban</li>
-              <li>Cape Town</li>
-            </ul>
-          </div>
-        </div>
 
-        {/* Secure notice */}
-        <div className="mt-8 rounded-lg border border-border/60 bg-card/50 p-5">
-          <div className="flex items-center gap-2 text-sm font-semibold">
-            <ShieldCheck className="h-4 w-4 text-primary" />
-            Secure Financial & Professional Protection
-          </div>
-          <p className="mt-2 text-xs text-muted-foreground">
-            All construction funds are protected by TradeSafe (Pty) Ltd, an authorized Escrow Agent
-            regulated by PASA. Funds are released only upon milestone verification by our integrated
-            professional team. All trust accounts are securely held with Standard Bank of South Africa.
-          </p>
-        </div>
-
-        {/* Copyright */}
-        <div className="mt-8 border-t border-border/60 pt-6 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} Lum Tech Pro SA. Lum Tech Pro SA is a division of Lum Tech Solutions (Pty) Ltd.</div>
-          <div className="mt-1">Reg No: 202X/XXXXXX/07 | Built for the South African Built Environment.</div>
-        </div>
-      </div>
-    </footer>
-  );
-}
