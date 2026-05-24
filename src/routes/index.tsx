@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
 function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Header />
+      <MarketingHeader />
       <Hero />
       <ProblemSection />
       <PillarsSection />
@@ -42,41 +42,11 @@ function Landing() {
       <HowItWorks />
       <RolesSection />
       <CTA />
-      <Footer />
+      <MarketingFooter />
     </div>
   );
 }
 
-function Header() {
-  return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-amber shadow-glow">
-            <HardHat className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="font-display text-lg font-bold tracking-tight">
-            LUM TECH PRO <span className="text-primary">SA</span>
-          </span>
-        </Link>
-        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-          <a href="#pillars" className="hover:text-foreground">Why us</a>
-          <a href="#tiers" className="hover:text-foreground">Tiers</a>
-          <a href="#how-it-works" className="hover:text-foreground">How it works</a>
-          <a href="#roles" className="hover:text-foreground">Who it's for</a>
-        </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/login">Sign in</Link>
-          </Button>
-          <Button asChild size="sm">
-            <Link to="/signup">Get started</Link>
-          </Button>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 function Hero() {
   return (
