@@ -10,7 +10,7 @@ import { HardHat } from "lucide-react";
 
 export const Route = createFileRoute("/login")({
   component: LoginPage,
-  head: () => ({ meta: [{ title: "Sign in · Build Connect SA" }] }),
+  head: () => ({ meta: [{ title: "Sign in · LUM TECH PRO SA" }] }),
 });
 
 function LoginPage() {
@@ -87,7 +87,7 @@ export function AuthShell({
             <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-amber">
               <HardHat className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="font-display text-lg font-bold">Build Connect SA</span>
+            <span className="font-display text-lg font-bold">LUM TECH PRO SA</span>
           </Link>
           <div>
             <p className="font-display text-3xl font-semibold leading-tight">

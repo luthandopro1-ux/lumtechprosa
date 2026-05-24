@@ -14,7 +14,7 @@ import { formatVoucherCode } from "@/lib/voucher";
 
 export const Route = createFileRoute("/_authenticated/dashboard/supplier")({
   component: SupplierDashboard,
-  head: () => ({ meta: [{ title: "Supplier Portal · Build Connect SA" }] }),
+  head: () => ({ meta: [{ title: "Supplier Portal · LUM TECH PRO SA" }] }),
 });
 
 const NAV = [{ to: "/dashboard/supplier", label: "Voucher portal", icon: QrCode }];

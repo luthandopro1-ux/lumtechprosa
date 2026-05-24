@@ -55,7 +55,7 @@ export function computeBreakdown({
     clientPct = 4;
     builderPct = 4;
     workflow =
-      "Build Connect SA full Project Management. Materials secured via closed-loop Supplier Vouchers.";
+      "LUM TECH PRO SA full Project Management. Materials secured via closed-loop Supplier Vouchers.";
     contractorSuppliesMaterial = false;
     tierLabel = "Tier 2 · Standard Residential / Renovation";
   } else {

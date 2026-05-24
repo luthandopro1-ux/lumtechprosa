@@ -13,7 +13,7 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Build Connect SA — KZN Construction Escrow Marketplace" },
+      { title: "LUM TECH PRO SA — KZN Construction Escrow Marketplace" },
       {
         name: "description",
         content:
@@ -47,7 +47,7 @@ function Header() {
             <HardHat className="h-5 w-5 text-primary-foreground" />
           </div>
           <span className="font-display text-lg font-bold tracking-tight">
-            Build Connect <span className="text-primary">SA</span>
+            LUM TECH PRO <span className="text-primary">SA</span>
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
@@ -136,7 +136,7 @@ const TIERS = [
     split: "8% (4% client · 4% builder)",
     featured: true,
     points: [
-      "Full Build Connect SA project management",
+      "Full LUM TECH PRO SA project management",
       "Closed-loop supplier vouchers",
       "QS + Engineer milestone sign-off",
     ],
@@ -304,10 +304,72 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border/60 py-10">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 text-sm text-muted-foreground sm:px-6">
-        <div>© {new Date().getFullYear()} Build Connect SA · KwaZulu-Natal</div>
-        <div>TradeSafe Escrow · NHBRC aligned</div>
+    <footer className="border-t border-border/60 bg-background">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+        {/* Brand header */}
+        <div className="border-b border-border/60 pb-6">
+          <h3 className="font-display text-xl font-bold tracking-tight">LUM TECH PRO SA</h3>
+          <p className="mt-1 text-sm text-muted-foreground">Professional Building & Construction Managed Marketplace</p>
+        </div>
+
+        {/* Link columns */}
+        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <h4 className="text-sm font-semibold">Professional Services</h4>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>Quantity Surveying</li>
+              <li>Structural Engineering</li>
+              <li>Project Management</li>
+              <li>Compliance & Permits</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold">Construction</h4>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>Residential Reno</li>
+              <li>Commercial Builds</li>
+              <li>Contractor Vetting</li>
+              <li>Material Vouchers</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold">Legal</h4>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>Terms of Service</li>
+              <li>Privacy Policy (POPIA)</li>
+              <li>Escrow Agreement</li>
+              <li>SANS Compliance</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold">Contact</h4>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>Support Desk</li>
+              <li>Johannesburg</li>
+              <li>Durban</li>
+              <li>Cape Town</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Secure notice */}
+        <div className="mt-8 rounded-lg border border-border/60 bg-card/50 p-5">
+          <div className="flex items-center gap-2 text-sm font-semibold">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            Secure Financial & Professional Protection
+          </div>
+          <p className="mt-2 text-xs text-muted-foreground">
+            All construction funds are protected by TradeSafe (Pty) Ltd, an authorized Escrow Agent
+            regulated by PASA. Funds are released only upon milestone verification by our integrated
+            professional team. All trust accounts are securely held with Standard Bank of South Africa.
+          </p>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-8 border-t border-border/60 pt-6 text-xs text-muted-foreground">
+          <div>© {new Date().getFullYear()} Lum Tech Pro SA. Lum Tech Pro SA is a division of Lum Tech Solutions (Pty) Ltd.</div>
+          <div className="mt-1">Reg No: 202X/XXXXXX/07 | Built for the South African Built Environment.</div>
+        </div>
       </div>
     </footer>
   );
