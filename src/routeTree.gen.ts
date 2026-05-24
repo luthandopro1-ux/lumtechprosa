@@ -15,8 +15,11 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDashboardSupplierRouteImport } from './routes/_authenticated/dashboard.supplier'
+import { Route as AuthenticatedDashboardProfessionalRouteImport } from './routes/_authenticated/dashboard.professional'
 import { Route as AuthenticatedDashboardClientRouteImport } from './routes/_authenticated/dashboard.client'
 import { Route as AuthenticatedDashboardBuilderRouteImport } from './routes/_authenticated/dashboard.builder'
+import { Route as AuthenticatedDashboardAdminRouteImport } from './routes/_authenticated/dashboard.admin'
 import { Route as AuthenticatedDashboardProjectsProjectIdRouteImport } from './routes/_authenticated/dashboard.projects.$projectId'
 import { Route as AuthenticatedDashboardClientProjectsNewRouteImport } from './routes/_authenticated/dashboard.client.projects.new'
 
@@ -49,6 +52,18 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedDashboardSupplierRoute =
+  AuthenticatedDashboardSupplierRouteImport.update({
+    id: '/supplier',
+    path: '/supplier',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardProfessionalRoute =
+  AuthenticatedDashboardProfessionalRouteImport.update({
+    id: '/professional',
+    path: '/professional',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 const AuthenticatedDashboardClientRoute =
   AuthenticatedDashboardClientRouteImport.update({
     id: '/client',
@@ -59,6 +74,12 @@ const AuthenticatedDashboardBuilderRoute =
   AuthenticatedDashboardBuilderRouteImport.update({
     id: '/builder',
     path: '/builder',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardAdminRoute =
+  AuthenticatedDashboardAdminRouteImport.update({
+    id: '/admin',
+    path: '/admin',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
 const AuthenticatedDashboardProjectsProjectIdRoute =
@@ -80,8 +101,11 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
+  '/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
+  '/dashboard/supplier': typeof AuthenticatedDashboardSupplierRoute
   '/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
   '/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
@@ -91,8 +115,11 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
+  '/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
+  '/dashboard/supplier': typeof AuthenticatedDashboardSupplierRoute
   '/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
   '/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
@@ -104,8 +131,11 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/_authenticated/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/_authenticated/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
+  '/_authenticated/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
+  '/_authenticated/dashboard/supplier': typeof AuthenticatedDashboardSupplierRoute
   '/_authenticated/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
   '/_authenticated/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
@@ -117,8 +147,11 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/dashboard'
+    | '/dashboard/admin'
     | '/dashboard/builder'
     | '/dashboard/client'
+    | '/dashboard/professional'
+    | '/dashboard/supplier'
     | '/dashboard/projects/$projectId'
     | '/dashboard/client/projects/new'
   fileRoutesByTo: FileRoutesByTo
@@ -128,8 +161,11 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/dashboard'
+    | '/dashboard/admin'
     | '/dashboard/builder'
     | '/dashboard/client'
+    | '/dashboard/professional'
+    | '/dashboard/supplier'
     | '/dashboard/projects/$projectId'
     | '/dashboard/client/projects/new'
   id:
@@ -140,8 +176,11 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/_authenticated/dashboard'
+    | '/_authenticated/dashboard/admin'
     | '/_authenticated/dashboard/builder'
     | '/_authenticated/dashboard/client'
+    | '/_authenticated/dashboard/professional'
+    | '/_authenticated/dashboard/supplier'
     | '/_authenticated/dashboard/projects/$projectId'
     | '/_authenticated/dashboard/client/projects/new'
   fileRoutesById: FileRoutesById
@@ -198,6 +237,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/dashboard/supplier': {
+      id: '/_authenticated/dashboard/supplier'
+      path: '/supplier'
+      fullPath: '/dashboard/supplier'
+      preLoaderRoute: typeof AuthenticatedDashboardSupplierRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/professional': {
+      id: '/_authenticated/dashboard/professional'
+      path: '/professional'
+      fullPath: '/dashboard/professional'
+      preLoaderRoute: typeof AuthenticatedDashboardProfessionalRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
     '/_authenticated/dashboard/client': {
       id: '/_authenticated/dashboard/client'
       path: '/client'
@@ -210,6 +263,13 @@ declare module '@tanstack/react-router' {
       path: '/builder'
       fullPath: '/dashboard/builder'
       preLoaderRoute: typeof AuthenticatedDashboardBuilderRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/admin': {
+      id: '/_authenticated/dashboard/admin'
+      path: '/admin'
+      fullPath: '/dashboard/admin'
+      preLoaderRoute: typeof AuthenticatedDashboardAdminRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
     '/_authenticated/dashboard/projects/$projectId': {
@@ -245,16 +305,23 @@ const AuthenticatedDashboardClientRouteWithChildren =
   )
 
 interface AuthenticatedDashboardRouteChildren {
+  AuthenticatedDashboardAdminRoute: typeof AuthenticatedDashboardAdminRoute
   AuthenticatedDashboardBuilderRoute: typeof AuthenticatedDashboardBuilderRoute
   AuthenticatedDashboardClientRoute: typeof AuthenticatedDashboardClientRouteWithChildren
+  AuthenticatedDashboardProfessionalRoute: typeof AuthenticatedDashboardProfessionalRoute
+  AuthenticatedDashboardSupplierRoute: typeof AuthenticatedDashboardSupplierRoute
   AuthenticatedDashboardProjectsProjectIdRoute: typeof AuthenticatedDashboardProjectsProjectIdRoute
 }
 
 const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
   {
+    AuthenticatedDashboardAdminRoute: AuthenticatedDashboardAdminRoute,
     AuthenticatedDashboardBuilderRoute: AuthenticatedDashboardBuilderRoute,
     AuthenticatedDashboardClientRoute:
       AuthenticatedDashboardClientRouteWithChildren,
+    AuthenticatedDashboardProfessionalRoute:
+      AuthenticatedDashboardProfessionalRoute,
+    AuthenticatedDashboardSupplierRoute: AuthenticatedDashboardSupplierRoute,
     AuthenticatedDashboardProjectsProjectIdRoute:
       AuthenticatedDashboardProjectsProjectIdRoute,
   }
