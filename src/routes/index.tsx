@@ -85,16 +85,16 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-            <ShieldCheck className="h-3.5 w-3.5" /> TradeSafe Escrow · NHBRC aligned
+            <ShieldCheck className="h-3.5 w-3.5" /> TradeSafe Escrow · QS & Engineer oversight · SANS-aligned
           </div>
           <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-            Build with <span className="text-gradient-amber">confidence</span>,
-            <br /> pay only on proof.
+            Build without the <span className="text-gradient-amber">risk</span>.
+            <br /> Pay only on verified proof.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            KwaZulu-Natal's tiered construction marketplace. Funds locked in escrow,
-            milestone sign-off by QS and Engineer, and a closed-loop supplier voucher
-            network that pays material suppliers across KZN — instantly.
+            South Africa's premier <strong className="text-foreground">managed marketplace</strong> for
+            building, renovations and structural infrastructure. Embedded Quantity Surveyors and
+            Engineers protect every milestone. TradeSafe Escrow protects every rand.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-gradient-amber text-primary-foreground shadow-glow">
