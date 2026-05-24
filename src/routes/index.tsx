@@ -354,10 +354,10 @@ function HowItWorks() {
 
 function RolesSection() {
   const roles = [
-    { title: "For Clients", body: "Lock funds in escrow, opt into in-house professionals, watch every milestone." },
-    { title: "For Builders", body: "Win projects, manage milestones, get paid for verified work — fast." },
-    { title: "For Professionals", body: "QS, Engineers and Surveyors verify NHBRC-aligned work and authorise releases." },
-    { title: "For Suppliers", body: "Scan voucher QR, get paid instantly. No invoicing chase." },
+    { title: "Property Owners & Renovators", body: "Homeowners extending, remodelling or building with total peace of mind that the money is safe and the structure won't crack." },
+    { title: "Commercial Developers", body: "Businesses needing transparent, milestone-tracked contractor procurement with rigorous QS and engineering audit layers." },
+    { title: "Vetted Contractors", body: "High-quality builders who want guaranteed payment security the moment they deliver compliant, professional work." },
+    { title: "Suppliers & Partners", body: "Material suppliers and corporate voucher partners plugging into a closed-loop ledger with instant, audited settlement." },
   ];
   return (
     <section id="roles" className="border-b border-border/60 py-20">
