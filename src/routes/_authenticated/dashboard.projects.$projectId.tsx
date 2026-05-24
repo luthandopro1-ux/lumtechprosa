@@ -81,13 +81,13 @@ function ProjectDetail() {
     mutationFn: async (args: { milestoneId: string; field: "qs_approved" | "engineer_approved" }) => {
       const m = milestones.find((x) => x.id === args.milestoneId);
       if (!m) throw new Error("Not found");
-      const next: Record<string, unknown> = { [args.field]: true };
       const qs = args.field === "qs_approved" ? true : m.qs_approved;
       const eng = args.field === "engineer_approved" ? true : m.engineer_approved;
-      if (qs && eng) next.status = "approved";
-      else next.status = "awaiting_signoff";
+      const status: "approved" | "awaiting_signoff" = qs && eng ? "approved" : "awaiting_signoff";
       const { error } = await supabase
-        .from("milestones").update(next).eq("id", args.milestoneId);
+        .from("milestones")
+        .update({ [args.field]: true, status })
+        .eq("id", args.milestoneId);
       if (error) throw error;
     },
     onSuccess: () => {
