@@ -15,6 +15,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDashboardProfessionalRouteImport } from './routes/_authenticated/dashboard.professional'
 import { Route as AuthenticatedDashboardClientRouteImport } from './routes/_authenticated/dashboard.client'
 import { Route as AuthenticatedDashboardBuilderRouteImport } from './routes/_authenticated/dashboard.builder'
 import { Route as AuthenticatedDashboardProjectsProjectIdRouteImport } from './routes/_authenticated/dashboard.projects.$projectId'
@@ -49,6 +50,12 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedDashboardProfessionalRoute =
+  AuthenticatedDashboardProfessionalRouteImport.update({
+    id: '/professional',
+    path: '/professional',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 const AuthenticatedDashboardClientRoute =
   AuthenticatedDashboardClientRouteImport.update({
     id: '/client',
@@ -82,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
+  '/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
   '/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
   '/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
@@ -93,6 +101,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
+  '/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
   '/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
   '/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
@@ -106,6 +115,7 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/_authenticated/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
+  '/_authenticated/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
   '/_authenticated/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
   '/_authenticated/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/dashboard/builder'
     | '/dashboard/client'
+    | '/dashboard/professional'
     | '/dashboard/projects/$projectId'
     | '/dashboard/client/projects/new'
   fileRoutesByTo: FileRoutesByTo
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/dashboard/builder'
     | '/dashboard/client'
+    | '/dashboard/professional'
     | '/dashboard/projects/$projectId'
     | '/dashboard/client/projects/new'
   id:
@@ -142,6 +154,7 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/_authenticated/dashboard/builder'
     | '/_authenticated/dashboard/client'
+    | '/_authenticated/dashboard/professional'
     | '/_authenticated/dashboard/projects/$projectId'
     | '/_authenticated/dashboard/client/projects/new'
   fileRoutesById: FileRoutesById
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/dashboard/professional': {
+      id: '/_authenticated/dashboard/professional'
+      path: '/professional'
+      fullPath: '/dashboard/professional'
+      preLoaderRoute: typeof AuthenticatedDashboardProfessionalRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
     '/_authenticated/dashboard/client': {
       id: '/_authenticated/dashboard/client'
       path: '/client'
@@ -247,6 +267,7 @@ const AuthenticatedDashboardClientRouteWithChildren =
 interface AuthenticatedDashboardRouteChildren {
   AuthenticatedDashboardBuilderRoute: typeof AuthenticatedDashboardBuilderRoute
   AuthenticatedDashboardClientRoute: typeof AuthenticatedDashboardClientRouteWithChildren
+  AuthenticatedDashboardProfessionalRoute: typeof AuthenticatedDashboardProfessionalRoute
   AuthenticatedDashboardProjectsProjectIdRoute: typeof AuthenticatedDashboardProjectsProjectIdRoute
 }
 
@@ -255,6 +276,8 @@ const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
     AuthenticatedDashboardBuilderRoute: AuthenticatedDashboardBuilderRoute,
     AuthenticatedDashboardClientRoute:
       AuthenticatedDashboardClientRouteWithChildren,
+    AuthenticatedDashboardProfessionalRoute:
+      AuthenticatedDashboardProfessionalRoute,
     AuthenticatedDashboardProjectsProjectIdRoute:
       AuthenticatedDashboardProjectsProjectIdRoute,
   }
@@ -286,3 +309,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
