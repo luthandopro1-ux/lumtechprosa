@@ -59,9 +59,10 @@ function Header() {
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
+          <a href="#pillars" className="hover:text-foreground">Why us</a>
           <a href="#tiers" className="hover:text-foreground">Tiers</a>
           <a href="#how-it-works" className="hover:text-foreground">How it works</a>
-          <a href="#roles" className="hover:text-foreground">For builders & clients</a>
+          <a href="#roles" className="hover:text-foreground">Who it's for</a>
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" size="sm">
