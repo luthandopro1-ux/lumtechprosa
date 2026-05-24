@@ -8,16 +8,22 @@ import {
   Building2,
   ArrowRight,
   CheckCircle2,
+  AlertTriangle,
+  Calculator,
+  Ruler,
+  ClipboardCheck,
+  Landmark,
+  Ticket,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LUM TECH PRO SA — KZN Construction Escrow Marketplace" },
+      { title: "LUM TECH PRO SA — Managed Construction Marketplace" },
       {
         name: "description",
         content:
-          "Tier-based pricing, TradeSafe escrow, milestone sign-off, and closed-loop supplier vouchers for KwaZulu-Natal contractors and clients.",
+          "South Africa's premier managed marketplace for building & renovations. Embedded QS + Engineers, milestone sign-off, and TradeSafe Escrow eliminate construction risk.",
       },
     ],
   }),
@@ -29,6 +35,8 @@ function Landing() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <Hero />
+      <ProblemSection />
+      <PillarsSection />
       <TiersSection />
       <HowItWorks />
       <RolesSection />
@@ -51,9 +59,10 @@ function Header() {
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
+          <a href="#pillars" className="hover:text-foreground">Why us</a>
           <a href="#tiers" className="hover:text-foreground">Tiers</a>
           <a href="#how-it-works" className="hover:text-foreground">How it works</a>
-          <a href="#roles" className="hover:text-foreground">For builders & clients</a>
+          <a href="#roles" className="hover:text-foreground">Who it's for</a>
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" size="sm">
@@ -76,16 +85,16 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-            <ShieldCheck className="h-3.5 w-3.5" /> TradeSafe Escrow · NHBRC aligned
+            <ShieldCheck className="h-3.5 w-3.5" /> TradeSafe Escrow · QS & Engineer oversight · SANS-aligned
           </div>
           <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-            Build with <span className="text-gradient-amber">confidence</span>,
-            <br /> pay only on proof.
+            Build without the <span className="text-gradient-amber">risk</span>.
+            <br /> Pay only on verified proof.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            KwaZulu-Natal's tiered construction marketplace. Funds locked in escrow,
-            milestone sign-off by QS and Engineer, and a closed-loop supplier voucher
-            network that pays material suppliers across KZN — instantly.
+            South Africa's premier <strong className="text-foreground">managed marketplace</strong> for
+            building, renovations and structural infrastructure. Embedded Quantity Surveyors and
+            Engineers protect every milestone. TradeSafe Escrow protects every rand.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-gradient-amber text-primary-foreground shadow-glow">
@@ -102,6 +111,96 @@ function Hero() {
             <Stat value="R150k–R1.5m" label="Tier 2 · 8% split" />
             <Stat value="R1.5m+" label="Tier 3 · 6% split" />
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProblemSection() {
+  const pains = [
+    "Unvetted contractors who disappear with deposits",
+    "Sudden cost escalations & untracked variations",
+    "Half-finished work and abandoned sites",
+    "Structural non-compliance that fails SANS inspections",
+  ];
+  return (
+    <section className="border-b border-border/60 bg-card/30 py-20">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-destructive/30 bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive">
+            <AlertTriangle className="h-3.5 w-3.5" /> The construction risk problem
+          </div>
+          <h2 className="mt-6 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            Other platforms hand you a list of numbers.
+            <br />
+            <span className="text-gradient-amber">We hand you a team.</span>
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Building and renovating in South Africa is notoriously high-risk. Lum Tech Pro SA
+            eliminates that risk by embedding professional oversight and escrow into every project —
+            so property owners and developers stay protected from start to handover.
+          </p>
+        </div>
+        <ul className="space-y-3">
+          {pains.map((p) => (
+            <li key={p} className="flex items-start gap-3 rounded-lg border border-border bg-card/60 p-4">
+              <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
+              <span className="text-sm text-muted-foreground">{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+const PILLARS = [
+  {
+    icon: Calculator,
+    title: "Built-in QS & Engineers",
+    body: "Integrated Quantity Surveyors verify your Bill of Quantities and market rates. Registered Engineers conduct phase inspections so every stage meets National Building Regulations.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Milestone-driven project management",
+    body: "Every build is broken into transparent phases — foundation, brickwork, roofing, finishes. Contractors submit proof; our professionals sign off digitally before money moves.",
+  },
+  {
+    icon: Landmark,
+    title: "TradeSafe Escrow protection",
+    body: "Project funds sit in an audited TradeSafe Escrow account (backed by Standard Bank). Money releases only after a QS or Engineer certifies the milestone.",
+  },
+  {
+    icon: Ticket,
+    title: "Voucher & incentive ledger",
+    body: "Corporate clients, housing funds and partners distribute pre-funded construction credits that streamline material procurement and subsidise verified local projects.",
+  },
+];
+
+function PillarsSection() {
+  return (
+    <section id="pillars" className="border-b border-border/60 py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="max-w-2xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            Four pillars holding up every project.
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            You don't just hire a contractor — you hire an ecosystem engineered to deliver compliant,
+            on-budget, structurally sound work.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {PILLARS.map((p) => (
+            <div key={p.title} className="rounded-xl border border-border bg-card p-6 transition hover:border-primary/40">
+              <div className="grid h-11 w-11 place-items-center rounded-md bg-primary/15 text-primary">
+                <p.icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-display text-lg font-semibold">{p.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{p.body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -255,10 +354,10 @@ function HowItWorks() {
 
 function RolesSection() {
   const roles = [
-    { title: "For Clients", body: "Lock funds in escrow, opt into in-house professionals, watch every milestone." },
-    { title: "For Builders", body: "Win projects, manage milestones, get paid for verified work — fast." },
-    { title: "For Professionals", body: "QS, Engineers and Surveyors verify NHBRC-aligned work and authorise releases." },
-    { title: "For Suppliers", body: "Scan voucher QR, get paid instantly. No invoicing chase." },
+    { title: "Property Owners & Renovators", body: "Homeowners extending, remodelling or building with total peace of mind that the money is safe and the structure won't crack." },
+    { title: "Commercial Developers", body: "Businesses needing transparent, milestone-tracked contractor procurement with rigorous QS and engineering audit layers." },
+    { title: "Vetted Contractors", body: "High-quality builders who want guaranteed payment security the moment they deliver compliant, professional work." },
+    { title: "Suppliers & Partners", body: "Material suppliers and corporate voucher partners plugging into a closed-loop ledger with instant, audited settlement." },
   ];
   return (
     <section id="roles" className="border-b border-border/60 py-20">
