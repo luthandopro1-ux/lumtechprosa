@@ -9,38 +9,181 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDashboardClientRouteImport } from './routes/_authenticated/dashboard.client'
+import { Route as AuthenticatedDashboardBuilderRouteImport } from './routes/_authenticated/dashboard.builder'
+import { Route as AuthenticatedDashboardProjectsProjectIdRouteImport } from './routes/_authenticated/dashboard.projects.$projectId'
+import { Route as AuthenticatedDashboardClientProjectsNewRouteImport } from './routes/_authenticated/dashboard.client.projects.new'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedDashboardClientRoute =
+  AuthenticatedDashboardClientRouteImport.update({
+    id: '/client',
+    path: '/client',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardBuilderRoute =
+  AuthenticatedDashboardBuilderRouteImport.update({
+    id: '/builder',
+    path: '/builder',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardProjectsProjectIdRoute =
+  AuthenticatedDashboardProjectsProjectIdRouteImport.update({
+    id: '/projects/$projectId',
+    path: '/projects/$projectId',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardClientProjectsNewRoute =
+  AuthenticatedDashboardClientProjectsNewRouteImport.update({
+    id: '/projects/new',
+    path: '/projects/new',
+    getParentRoute: () => AuthenticatedDashboardClientRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/signup': typeof SignupRoute
+  '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
+  '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
+  '/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
+  '/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/signup': typeof SignupRoute
+  '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
+  '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
+  '/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
+  '/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/signup': typeof SignupRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
+  '/_authenticated/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
+  '/_authenticated/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
+  '/_authenticated/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/onboarding'
+    | '/signup'
+    | '/dashboard'
+    | '/dashboard/builder'
+    | '/dashboard/client'
+    | '/dashboard/projects/$projectId'
+    | '/dashboard/client/projects/new'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/onboarding'
+    | '/signup'
+    | '/dashboard'
+    | '/dashboard/builder'
+    | '/dashboard/client'
+    | '/dashboard/projects/$projectId'
+    | '/dashboard/client/projects/new'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/login'
+    | '/onboarding'
+    | '/signup'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/dashboard/builder'
+    | '/_authenticated/dashboard/client'
+    | '/_authenticated/dashboard/projects/$projectId'
+    | '/_authenticated/dashboard/client/projects/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  OnboardingRoute: typeof OnboardingRoute
+  SignupRoute: typeof SignupRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +191,98 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/dashboard/client': {
+      id: '/_authenticated/dashboard/client'
+      path: '/client'
+      fullPath: '/dashboard/client'
+      preLoaderRoute: typeof AuthenticatedDashboardClientRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/builder': {
+      id: '/_authenticated/dashboard/builder'
+      path: '/builder'
+      fullPath: '/dashboard/builder'
+      preLoaderRoute: typeof AuthenticatedDashboardBuilderRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/projects/$projectId': {
+      id: '/_authenticated/dashboard/projects/$projectId'
+      path: '/projects/$projectId'
+      fullPath: '/dashboard/projects/$projectId'
+      preLoaderRoute: typeof AuthenticatedDashboardProjectsProjectIdRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/client/projects/new': {
+      id: '/_authenticated/dashboard/client/projects/new'
+      path: '/projects/new'
+      fullPath: '/dashboard/client/projects/new'
+      preLoaderRoute: typeof AuthenticatedDashboardClientProjectsNewRouteImport
+      parentRoute: typeof AuthenticatedDashboardClientRoute
+    }
   }
 }
 
+interface AuthenticatedDashboardClientRouteChildren {
+  AuthenticatedDashboardClientProjectsNewRoute: typeof AuthenticatedDashboardClientProjectsNewRoute
+}
+
+const AuthenticatedDashboardClientRouteChildren: AuthenticatedDashboardClientRouteChildren =
+  {
+    AuthenticatedDashboardClientProjectsNewRoute:
+      AuthenticatedDashboardClientProjectsNewRoute,
+  }
+
+const AuthenticatedDashboardClientRouteWithChildren =
+  AuthenticatedDashboardClientRoute._addFileChildren(
+    AuthenticatedDashboardClientRouteChildren,
+  )
+
+interface AuthenticatedDashboardRouteChildren {
+  AuthenticatedDashboardBuilderRoute: typeof AuthenticatedDashboardBuilderRoute
+  AuthenticatedDashboardClientRoute: typeof AuthenticatedDashboardClientRouteWithChildren
+  AuthenticatedDashboardProjectsProjectIdRoute: typeof AuthenticatedDashboardProjectsProjectIdRoute
+}
+
+const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
+  {
+    AuthenticatedDashboardBuilderRoute: AuthenticatedDashboardBuilderRoute,
+    AuthenticatedDashboardClientRoute:
+      AuthenticatedDashboardClientRouteWithChildren,
+    AuthenticatedDashboardProjectsProjectIdRoute:
+      AuthenticatedDashboardProjectsProjectIdRoute,
+  }
+
+const AuthenticatedDashboardRouteWithChildren =
+  AuthenticatedDashboardRoute._addFileChildren(
+    AuthenticatedDashboardRouteChildren,
+  )
+
+interface AuthenticatedRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRouteWithChildren
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRouteWithChildren,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
+  LoginRoute: LoginRoute,
+  OnboardingRoute: OnboardingRoute,
+  SignupRoute: SignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
