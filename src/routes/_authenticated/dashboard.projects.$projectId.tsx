@@ -84,10 +84,11 @@ function ProjectDetail() {
       const qs = args.field === "qs_approved" ? true : m.qs_approved;
       const eng = args.field === "engineer_approved" ? true : m.engineer_approved;
       const status: "approved" | "awaiting_signoff" = qs && eng ? "approved" : "awaiting_signoff";
+      const update = args.field === "qs_approved"
+        ? { qs_approved: true, status }
+        : { engineer_approved: true, status };
       const { error } = await supabase
-        .from("milestones")
-        .update({ [args.field]: true, status })
-        .eq("id", args.milestoneId);
+        .from("milestones").update(update).eq("id", args.milestoneId);
       if (error) throw error;
     },
     onSuccess: () => {
