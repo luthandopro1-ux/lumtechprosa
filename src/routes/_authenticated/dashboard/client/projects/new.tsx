@@ -23,7 +23,7 @@ import { formatZar, zarToCents } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/dashboard/client/projects/new")({
   component: NewProjectWizard,
-  head: () => ({ meta: [{ title: "New project · Build Connect SA" }] }),
+  head: () => ({ meta: [{ title: "New project · LUM TECH PRO SA" }] }),
 });
 
 const NAV = [
@@ -153,7 +153,7 @@ function NewProjectWizard() {
             <div>
               <div className="text-sm font-semibold">In-House Professional Site Supervision</div>
               <p className="mt-1 text-xs text-muted-foreground">
-                Add Build Connect SA's Land Surveyor, Structural Engineer and Quantity
+                Add LUM TECH PRO SA's Land Surveyor, Structural Engineer and Quantity
                 Surveyor team for hands-on site management. Flat fee: <span className="text-primary">+5%</span> of project value, billed to client.
               </p>
             </div>
@@ -199,7 +199,7 @@ function NewProjectWizard() {
             </div>
           </div>
           <div className="rounded-xl border border-border bg-card/50 p-4 text-xs text-muted-foreground">
-            All commission splits follow Build Connect SA tier rules. Total escrow is
+            All commission splits follow LUM TECH PRO SA tier rules. Total escrow is
             what the client funds; builder fee is deducted at milestone payouts.
           </div>
         </aside>

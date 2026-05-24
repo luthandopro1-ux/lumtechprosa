@@ -70,22 +70,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Build Connect PRO SA — Construction Marketplace & Escrow" },
+      { title: "LUM TECH PRO SA — Construction Marketplace & Escrow" },
       {
         name: "description",
         content:
           "KwaZulu-Natal's tiered construction marketplace with TradeSafe escrow, milestone management, and closed-loop supplier vouchers.",
       },
-      { property: "og:title", content: "Build Connect PRO SA — Construction Marketplace & Escrow" },
+      { property: "og:title", content: "LUM TECH PRO SA — Construction Marketplace & Escrow" },
       {
         property: "og:description",
         content: "Secure construction project management for KZN.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:title", content: "Build Connect PRO SA — Construction Marketplace & Escrow" },
-      { name: "description", content: "BUILD CONNECT PRO SA is a B2B2C construction marketplace and project management web application." },
-      { property: "og:description", content: "BUILD CONNECT PRO SA is a B2B2C construction marketplace and project management web application." },
-      { name: "twitter:description", content: "BUILD CONNECT PRO SA is a B2B2C construction marketplace and project management web application." },
+      { name: "twitter:title", content: "LUM TECH PRO SA — Construction Marketplace & Escrow" },
+      { name: "description", content: "LUM TECH PRO SA is a B2B2C construction marketplace and project management web application." },
+      { property: "og:description", content: "LUM TECH PRO SA is a B2B2C construction marketplace and project management web application." },
+      { name: "twitter:description", content: "LUM TECH PRO SA is a B2B2C construction marketplace and project management web application." },
       { name: "twitter:card", content: "summary" },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/59f80ee7-6406-4fe7-872f-0ff4360e437d/id-preview-d387c96c--7c9e3847-5783-442a-b501-1ad1bfbee046.lovable.app-1779608391423.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/59f80ee7-6406-4fe7-872f-0ff4360e437d/id-preview-d387c96c--7c9e3847-5783-442a-b501-1ad1bfbee046.lovable.app-1779608391423.png" },

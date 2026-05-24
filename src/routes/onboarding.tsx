@@ -12,14 +12,14 @@ export const Route = createFileRoute("/onboarding")({
     if (!data.user) throw redirect({ to: "/login" });
   },
   component: OnboardingPage,
-  head: () => ({ meta: [{ title: "Pick your role · Build Connect SA" }] }),
+  head: () => ({ meta: [{ title: "Pick your role · LUM TECH PRO SA" }] }),
 });
 
 const ROLES: { id: Exclude<AppRole, "admin">; icon: typeof Building2; title: string; body: string }[] = [
   { id: "client", icon: Building2, title: "Client / Employer", body: "I'm funding a construction project and need transparency, escrow, and milestone control." },
   { id: "builder", icon: HardHat, title: "Main Contractor / Builder", body: "I want to win projects, manage milestones, and receive milestone-based escrow releases." },
   { id: "professional", icon: ShieldCheck, title: "Professional (QS / Engineer / Surveyor)", body: "I verify NHBRC-aligned work and authorise escrow releases on site." },
-  { id: "supplier", icon: Truck, title: "Material Supplier", body: "I supply building materials in KZN and accept Build Connect SA vouchers at the counter." },
+  { id: "supplier", icon: Truck, title: "Material Supplier", body: "I supply building materials in KZN and accept LUM TECH PRO SA vouchers at the counter." },
 ];
 
 function OnboardingPage() {
@@ -55,7 +55,7 @@ function OnboardingPage() {
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary">
             <Hammer className="h-3.5 w-3.5" /> One last step
           </div>
-          <h1 className="mt-4 font-display text-4xl font-bold">What brings you to Build Connect SA?</h1>
+          <h1 className="mt-4 font-display text-4xl font-bold">What brings you to LUM TECH PRO SA?</h1>
           <p className="mt-3 text-muted-foreground">Pick the role that fits — you can request additional roles later.</p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2">

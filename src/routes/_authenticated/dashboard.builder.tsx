@@ -7,7 +7,7 @@ import { formatZar, centsToZar } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/dashboard/builder")({
   component: BuilderDashboard,
-  head: () => ({ meta: [{ title: "Builder Dashboard · Build Connect SA" }] }),
+  head: () => ({ meta: [{ title: "Builder Dashboard · LUM TECH PRO SA" }] }),
 });
 
 const NAV = [

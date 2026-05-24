@@ -13,7 +13,7 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Build Connect SA — KZN Construction Escrow Marketplace" },
+      { title: "LUM TECH PRO SA — KZN Construction Escrow Marketplace" },
       {
         name: "description",
         content:
@@ -136,7 +136,7 @@ const TIERS = [
     split: "8% (4% client · 4% builder)",
     featured: true,
     points: [
-      "Full Build Connect SA project management",
+      "Full LUM TECH PRO SA project management",
       "Closed-loop supplier vouchers",
       "QS + Engineer milestone sign-off",
     ],
@@ -306,7 +306,7 @@ function Footer() {
   return (
     <footer className="border-t border-border/60 py-10">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 text-sm text-muted-foreground sm:px-6">
-        <div>© {new Date().getFullYear()} Build Connect SA · KwaZulu-Natal</div>
+        <div>© {new Date().getFullYear()} LUM TECH PRO SA · KwaZulu-Natal</div>
         <div>TradeSafe Escrow · NHBRC aligned</div>
       </div>
     </footer>
