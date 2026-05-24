@@ -19,11 +19,11 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LUM TECH PRO SA — KZN Construction Escrow Marketplace" },
+      { title: "LUM TECH PRO SA — Managed Construction Marketplace" },
       {
         name: "description",
         content:
-          "Tier-based pricing, TradeSafe escrow, milestone sign-off, and closed-loop supplier vouchers for KwaZulu-Natal contractors and clients.",
+          "South Africa's premier managed marketplace for building & renovations. Embedded QS + Engineers, milestone sign-off, and TradeSafe Escrow eliminate construction risk.",
       },
     ],
   }),
@@ -35,6 +35,8 @@ function Landing() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <Hero />
+      <ProblemSection />
+      <PillarsSection />
       <TiersSection />
       <HowItWorks />
       <RolesSection />
