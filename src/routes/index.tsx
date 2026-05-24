@@ -8,6 +8,12 @@ import {
   Building2,
   ArrowRight,
   CheckCircle2,
+  AlertTriangle,
+  Calculator,
+  Ruler,
+  ClipboardCheck,
+  Landmark,
+  Ticket,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
