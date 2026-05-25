@@ -87,7 +87,7 @@ export function AuthShell({
             <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-amber">
               <HardHat className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="font-display text-lg font-bold">LUM TECH PRO SA</span>
+            <span className="font-display text-lg font-bold">Lum Tech Pro SA</span>
           </Link>
           <div>
             <p className="font-display text-3xl font-semibold leading-tight">

@@ -34,7 +34,7 @@ export function AppShell({
           <div className="grid h-8 w-8 place-items-center rounded-md bg-gradient-amber">
             <HardHat className="h-4 w-4 text-primary-foreground" />
           </div>
-          <span className="font-display text-sm font-bold">LUM TECH PRO SA</span>
+          <span className="font-display text-sm font-bold">Lum Tech Pro SA</span>
         </div>
         <nav className="flex-1 space-y-1 p-3">
           {nav.map((item) => {
