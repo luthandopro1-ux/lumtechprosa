@@ -96,9 +96,14 @@ export function AuthShell({
       </div>
       <div className="flex flex-1 items-center justify-center p-6">
         <div className="w-full max-w-md">
-          <div className="mb-8 text-center lg:text-left">
-            <h1 className="font-display text-3xl font-bold tracking-tight">{title}</h1>
-            <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>
+          <div className="mb-8 flex flex-col items-center gap-4 text-center lg:items-start lg:text-left">
+            <div className="lg:hidden">
+              <Logo size={32} />
+            </div>
+            <div>
+              <h1 className="font-display text-3xl font-bold tracking-tight">{title}</h1>
+              <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>
+            </div>
           </div>
           {children}
         </div>
