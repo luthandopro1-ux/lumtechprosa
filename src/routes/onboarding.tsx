@@ -13,7 +13,7 @@ export const Route = createFileRoute("/onboarding")({
     if (!data.user) throw redirect({ to: "/login" });
   },
   component: OnboardingPage,
-  head: () => ({ meta: [{ title: "Pick your role · LUM TECH PRO SA" }] }),
+  head: () => ({ meta: [{ title: "Pick your role · Lum Tech Pro SA" }] }),
 });
 
 const ROLES: { id: Exclude<AppRole, "admin">; icon: typeof Building2; title: string; body: string }[] = [
