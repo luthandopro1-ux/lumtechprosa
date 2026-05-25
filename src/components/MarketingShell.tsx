@@ -60,8 +60,6 @@ export function MarketingFooter() {
             </p>
           </div>
         </div>
-          </p>
-        </div>
 
         <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <FooterCol heading="Professional Services" group="services" items={FOOTER_LINKS.services} />
