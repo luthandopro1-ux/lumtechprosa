@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Building2, HardHat, Hammer, Truck, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { Logo } from "@/components/Logo";
 import type { AppRole } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/onboarding")({
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/onboarding")({
     if (!data.user) throw redirect({ to: "/login" });
   },
   component: OnboardingPage,
-  head: () => ({ meta: [{ title: "Pick your role · LUM TECH PRO SA" }] }),
+  head: () => ({ meta: [{ title: "Pick your role · Lum Tech Pro SA" }] }),
 });
 
 const ROLES: { id: Exclude<AppRole, "admin">; icon: typeof Building2; title: string; body: string }[] = [
@@ -51,6 +52,9 @@ function OnboardingPage() {
   return (
     <div className="min-h-screen bg-background py-12 sm:py-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
+        <div className="mb-10 flex justify-center">
+          <Logo size={40} />
+        </div>
         <div className="text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary">
             <Hammer className="h-3.5 w-3.5" /> One last step

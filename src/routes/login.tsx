@@ -6,11 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
-import { HardHat } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 export const Route = createFileRoute("/login")({
   component: LoginPage,
-  head: () => ({ meta: [{ title: "Sign in · LUM TECH PRO SA" }] }),
+  head: () => ({ meta: [{ title: "Sign in · Lum Tech Pro SA" }] }),
 });
 
 function LoginPage() {
@@ -83,12 +83,7 @@ export function AuthShell({
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="absolute -bottom-20 -left-20 h-[500px] w-[500px] rounded-full bg-primary/15 blur-3xl" />
         <div className="relative flex h-full flex-col justify-between p-12">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-amber">
-              <HardHat className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <span className="font-display text-lg font-bold">Lum Tech Pro SA</span>
-          </Link>
+          <Logo size={40} />
           <div>
             <p className="font-display text-3xl font-semibold leading-tight">
               "Every rand on site, accounted for."
@@ -101,9 +96,14 @@ export function AuthShell({
       </div>
       <div className="flex flex-1 items-center justify-center p-6">
         <div className="w-full max-w-md">
-          <div className="mb-8 text-center lg:text-left">
-            <h1 className="font-display text-3xl font-bold tracking-tight">{title}</h1>
-            <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>
+          <div className="mb-8 flex flex-col items-center gap-4 text-center lg:items-start lg:text-left">
+            <div className="lg:hidden">
+              <Logo size={32} />
+            </div>
+            <div>
+              <h1 className="font-display text-3xl font-bold tracking-tight">{title}</h1>
+              <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>
+            </div>
           </div>
           {children}
         </div>

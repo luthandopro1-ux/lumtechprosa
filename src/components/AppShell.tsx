@@ -1,5 +1,6 @@
 import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
-import { HardHat, LogOut, type LucideIcon } from "lucide-react";
+import { LogOut, type LucideIcon } from "lucide-react";
+import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import type { AppRole } from "@/hooks/use-auth";
@@ -30,11 +31,8 @@ export function AppShell({
   return (
     <div className="flex min-h-screen bg-background">
       <aside className="hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
-        <div className="flex h-16 items-center gap-2 border-b border-sidebar-border px-5">
-          <div className="grid h-8 w-8 place-items-center rounded-md bg-gradient-amber">
-            <HardHat className="h-4 w-4 text-primary-foreground" />
-          </div>
-          <span className="font-display text-sm font-bold">Lum Tech Pro SA</span>
+        <div className="flex h-16 items-center border-b border-sidebar-border px-5">
+          <Logo size={30} />
         </div>
         <nav className="flex-1 space-y-1 p-3">
           {nav.map((item) => {

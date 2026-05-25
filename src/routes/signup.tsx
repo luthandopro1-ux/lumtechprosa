@@ -10,7 +10,7 @@ import { AuthShell, Divider, GoogleIcon } from "./login";
 
 export const Route = createFileRoute("/signup")({
   component: SignupPage,
-  head: () => ({ meta: [{ title: "Create account · LUM TECH PRO SA" }] }),
+  head: () => ({ meta: [{ title: "Create account · Lum Tech Pro SA" }] }),
 });
 
 function SignupPage() {
