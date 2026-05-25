@@ -52,10 +52,14 @@ export function MarketingFooter() {
   return (
     <footer className="border-t border-border/60 bg-background">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-        <div className="border-b border-border/60 pb-6">
-          <h3 className="font-display text-xl font-bold tracking-tight">Lum Tech Pro SA</h3>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Professional Building & Construction Managed Marketplace
+        <div className="flex flex-col gap-3 border-b border-border/60 pb-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <Logo size={36} asLink={false} />
+            <p className="mt-3 text-sm text-muted-foreground">
+              Professional Building & Construction Managed Marketplace
+            </p>
+          </div>
+        </div>
           </p>
         </div>
 
