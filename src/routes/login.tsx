@@ -83,7 +83,7 @@ export function AuthShell({
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="absolute -bottom-20 -left-20 h-[500px] w-[500px] rounded-full bg-primary/15 blur-3xl" />
         <div className="relative flex h-full flex-col justify-between p-12">
-          <Logo size={40} />
+          <Logo size={64} glow />
           <div>
             <p className="font-display text-3xl font-semibold leading-tight">
               "Every rand on site, accounted for."
