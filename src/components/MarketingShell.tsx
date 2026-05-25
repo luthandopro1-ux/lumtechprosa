@@ -11,7 +11,7 @@ export function MarketingHeader() {
             <HardHat className="h-5 w-5 text-primary-foreground" />
           </div>
           <span className="font-display text-lg font-bold tracking-tight">
-            LUM TECH PRO <span className="text-primary">SA</span>
+            Lum Tech Pro <span className="text-primary">SA</span>
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
@@ -59,7 +59,7 @@ export function MarketingFooter() {
     <footer className="border-t border-border/60 bg-background">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         <div className="border-b border-border/60 pb-6">
-          <h3 className="font-display text-xl font-bold tracking-tight">LUM TECH PRO SA</h3>
+          <h3 className="font-display text-xl font-bold tracking-tight">Lum Tech Pro SA</h3>
           <p className="mt-1 text-sm text-muted-foreground">
             Professional Building & Construction Managed Marketplace
           </p>
