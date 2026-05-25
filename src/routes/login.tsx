@@ -6,11 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
-import { HardHat } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 export const Route = createFileRoute("/login")({
   component: LoginPage,
-  head: () => ({ meta: [{ title: "Sign in · LUM TECH PRO SA" }] }),
+  head: () => ({ meta: [{ title: "Sign in · Lum Tech Pro SA" }] }),
 });
 
 function LoginPage() {
