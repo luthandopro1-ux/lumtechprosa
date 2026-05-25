@@ -83,12 +83,7 @@ export function AuthShell({
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="absolute -bottom-20 -left-20 h-[500px] w-[500px] rounded-full bg-primary/15 blur-3xl" />
         <div className="relative flex h-full flex-col justify-between p-12">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-amber">
-              <HardHat className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <span className="font-display text-lg font-bold">Lum Tech Pro SA</span>
-          </Link>
+          <Logo size={40} />
           <div>
             <p className="font-display text-3xl font-semibold leading-tight">
               "Every rand on site, accounted for."
