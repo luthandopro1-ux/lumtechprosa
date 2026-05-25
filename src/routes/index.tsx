@@ -20,7 +20,7 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LUM TECH PRO SA — Managed Construction Marketplace" },
+      { title: "Lum Tech Pro SA — Managed Construction Marketplace" },
       {
         name: "description",
         content:
@@ -206,7 +206,7 @@ const TIERS = [
     split: "8% (4% client · 4% builder)",
     featured: true,
     points: [
-      "Full LUM TECH PRO SA project management",
+      "Full Lum Tech Pro SA project management",
       "Closed-loop supplier vouchers",
       "QS + Engineer milestone sign-off",
     ],

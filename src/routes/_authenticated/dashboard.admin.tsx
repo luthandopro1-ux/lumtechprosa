@@ -8,7 +8,7 @@ import { formatZar, centsToZar } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/dashboard/admin")({
   component: AdminDashboard,
-  head: () => ({ meta: [{ title: "Admin · LUM TECH PRO SA" }] }),
+  head: () => ({ meta: [{ title: "Admin · Lum Tech Pro SA" }] }),
 });
 
 const NAV = [{ to: "/dashboard/admin", label: "Overview", icon: ShieldCheck }];

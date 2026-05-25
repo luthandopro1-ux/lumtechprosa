@@ -14,7 +14,7 @@ interface LogoProps {
 
 /**
  * Lum Tech Pro SA brand lockup. Renders the official logo asset as an <img>.
- * The PNG already contains both the icon and "LUM TECH PRO SA" wordmark in
+ * The PNG already contains both the icon and "Lum Tech Pro SA" wordmark in
  * brand colors (teal→cyan gradient + white), designed for dark surfaces.
  * On light surfaces the white wordmark blends in, so prefer dark backgrounds
  * or use `variant="compact"` (icon only — todo).

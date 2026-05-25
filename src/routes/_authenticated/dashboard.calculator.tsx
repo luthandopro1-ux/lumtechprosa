@@ -13,7 +13,7 @@ import { ShieldCheck, HardHat, Calculator } from "lucide-react";
 export const Route = createFileRoute("/_authenticated/dashboard/calculator")({
   head: () => ({
     meta: [
-      { title: "Fee & Escrow Calculator · LUM TECH PRO SA" },
+      { title: "Fee & Escrow Calculator · Lum Tech Pro SA" },
       { name: "description", content: "Internal tier & fee calculation engine." },
       { name: "robots", content: "noindex,nofollow" },
     ],

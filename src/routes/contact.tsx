@@ -5,7 +5,7 @@ import { MarketingHeader, MarketingFooter } from "@/components/MarketingShell";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact · LUM TECH PRO SA" },
+      { title: "Contact · Lum Tech Pro SA" },
       {
         name: "description",
         content:

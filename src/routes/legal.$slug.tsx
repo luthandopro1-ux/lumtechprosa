@@ -11,7 +11,7 @@ export const Route = createFileRoute("/legal/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.page.title} · LUM TECH PRO SA` },
+          { title: `${loaderData.page.title} · Lum Tech Pro SA` },
           { name: "description", content: loaderData.page.intro },
         ]
       : [],
