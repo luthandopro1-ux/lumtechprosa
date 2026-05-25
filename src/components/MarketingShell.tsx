@@ -1,19 +1,13 @@
 import { Link } from "@tanstack/react-router";
-import { HardHat, ShieldCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/Logo";
 
 export function MarketingHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-amber shadow-glow">
-            <HardHat className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="font-display text-lg font-bold tracking-tight">
-            Lum Tech Pro <span className="text-primary">SA</span>
-          </span>
-        </Link>
+        <Logo size={32} />
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
           <Link to="/" hash="pillars" className="hover:text-foreground">Why us</Link>
           <Link to="/" hash="tiers" className="hover:text-foreground">Tiers</Link>
