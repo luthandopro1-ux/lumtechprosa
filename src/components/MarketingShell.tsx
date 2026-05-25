@@ -5,14 +5,14 @@ import { Logo } from "@/components/Logo";
 
 export function MarketingHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Logo size={32} />
-        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-          <Link to="/" hash="pillars" className="hover:text-foreground">Why us</Link>
-          <Link to="/" hash="tiers" className="hover:text-foreground">Tiers</Link>
-          <Link to="/" hash="how-it-works" className="hover:text-foreground">How it works</Link>
-          <Link to="/contact" className="hover:text-foreground">Contact</Link>
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/75 backdrop-blur-xl">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:h-24 sm:px-6">
+        <Logo size={44} className="sm:[&_img]:!h-[56px]" glow />
+        <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex">
+          <Link to="/" hash="pillars" className="transition hover:text-foreground">Why us</Link>
+          <Link to="/" hash="tiers" className="transition hover:text-foreground">Tiers</Link>
+          <Link to="/" hash="how-it-works" className="transition hover:text-foreground">How it works</Link>
+          <Link to="/contact" className="transition hover:text-foreground">Contact</Link>
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" size="sm">
@@ -52,12 +52,9 @@ export function MarketingFooter() {
   return (
     <footer className="border-t border-border/60 bg-background">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-        <div className="flex flex-col gap-3 border-b border-border/60 pb-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-4 border-b border-border/60 pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <Logo size={36} asLink={false} />
-            <p className="mt-3 text-sm text-muted-foreground">
-              Professional Building & Construction Managed Marketplace
-            </p>
+            <Logo size={52} asLink={false} tagline static />
           </div>
         </div>
 

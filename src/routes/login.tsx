@@ -83,7 +83,7 @@ export function AuthShell({
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="absolute -bottom-20 -left-20 h-[500px] w-[500px] rounded-full bg-primary/15 blur-3xl" />
         <div className="relative flex h-full flex-col justify-between p-12">
-          <Logo size={40} />
+          <Logo size={64} glow />
           <div>
             <p className="font-display text-3xl font-semibold leading-tight">
               "Every rand on site, accounted for."
@@ -96,9 +96,9 @@ export function AuthShell({
       </div>
       <div className="flex flex-1 items-center justify-center p-6">
         <div className="w-full max-w-md">
-          <div className="mb-8 flex flex-col items-center gap-4 text-center lg:items-start lg:text-left">
+          <div className="mb-8 flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
             <div className="lg:hidden">
-              <Logo size={32} />
+              <Logo size={48} glow />
             </div>
             <div>
               <h1 className="font-display text-3xl font-bold tracking-tight">{title}</h1>

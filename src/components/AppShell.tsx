@@ -31,8 +31,11 @@ export function AppShell({
   return (
     <div className="flex min-h-screen bg-background">
       <aside className="hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
-        <div className="flex h-16 items-center border-b border-sidebar-border px-5">
-          <Logo size={30} />
+        <div className="flex min-h-[88px] flex-col justify-center gap-1.5 border-b border-sidebar-border px-5 py-4">
+          <Logo size={40} glow />
+          <p className="pl-1 font-display text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+            Building Intelligent Digital Infrastructure
+          </p>
         </div>
         <nav className="flex-1 space-y-1 p-3">
           {nav.map((item) => {

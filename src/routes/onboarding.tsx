@@ -53,7 +53,7 @@ function OnboardingPage() {
     <div className="min-h-screen bg-background py-12 sm:py-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="mb-10 flex justify-center">
-          <Logo size={40} />
+          <Logo size={56} glow tagline />
         </div>
         <div className="text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary">
