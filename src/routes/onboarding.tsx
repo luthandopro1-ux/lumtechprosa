@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Building2, HardHat, Hammer, Truck, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { Logo } from "@/components/Logo";
 import type { AppRole } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/onboarding")({
