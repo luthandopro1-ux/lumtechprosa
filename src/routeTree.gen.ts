@@ -22,6 +22,7 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedDashboardSupplierRouteImport } from './routes/_authenticated/dashboard.supplier'
 import { Route as AuthenticatedDashboardProfessionalRouteImport } from './routes/_authenticated/dashboard.professional'
 import { Route as AuthenticatedDashboardClientRouteImport } from './routes/_authenticated/dashboard/client'
+import { Route as AuthenticatedDashboardCalculatorRouteImport } from './routes/_authenticated/dashboard.calculator'
 import { Route as AuthenticatedDashboardBuilderRouteImport } from './routes/_authenticated/dashboard.builder'
 import { Route as AuthenticatedDashboardAdminRouteImport } from './routes/_authenticated/dashboard.admin'
 import { Route as AuthenticatedDashboardProjectsProjectIdRouteImport } from './routes/_authenticated/dashboard.projects.$projectId'
@@ -94,6 +95,12 @@ const AuthenticatedDashboardClientRoute =
     path: '/client',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
+const AuthenticatedDashboardCalculatorRoute =
+  AuthenticatedDashboardCalculatorRouteImport.update({
+    id: '/calculator',
+    path: '/calculator',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 const AuthenticatedDashboardBuilderRoute =
   AuthenticatedDashboardBuilderRouteImport.update({
     id: '/builder',
@@ -131,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
+  '/dashboard/calculator': typeof AuthenticatedDashboardCalculatorRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
   '/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
   '/dashboard/supplier': typeof AuthenticatedDashboardSupplierRoute
@@ -149,6 +157,7 @@ export interface FileRoutesByTo {
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
+  '/dashboard/calculator': typeof AuthenticatedDashboardCalculatorRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
   '/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
   '/dashboard/supplier': typeof AuthenticatedDashboardSupplierRoute
@@ -169,6 +178,7 @@ export interface FileRoutesById {
   '/services/$slug': typeof ServicesSlugRoute
   '/_authenticated/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
+  '/_authenticated/dashboard/calculator': typeof AuthenticatedDashboardCalculatorRoute
   '/_authenticated/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
   '/_authenticated/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
   '/_authenticated/dashboard/supplier': typeof AuthenticatedDashboardSupplierRoute
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/builder'
+    | '/dashboard/calculator'
     | '/dashboard/client'
     | '/dashboard/professional'
     | '/dashboard/supplier'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/builder'
+    | '/dashboard/calculator'
     | '/dashboard/client'
     | '/dashboard/professional'
     | '/dashboard/supplier'
@@ -226,6 +238,7 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/_authenticated/dashboard/admin'
     | '/_authenticated/dashboard/builder'
+    | '/_authenticated/dashboard/calculator'
     | '/_authenticated/dashboard/client'
     | '/_authenticated/dashboard/professional'
     | '/_authenticated/dashboard/supplier'
@@ -338,6 +351,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardClientRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
+    '/_authenticated/dashboard/calculator': {
+      id: '/_authenticated/dashboard/calculator'
+      path: '/calculator'
+      fullPath: '/dashboard/calculator'
+      preLoaderRoute: typeof AuthenticatedDashboardCalculatorRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
     '/_authenticated/dashboard/builder': {
       id: '/_authenticated/dashboard/builder'
       path: '/builder'
@@ -387,6 +407,7 @@ const AuthenticatedDashboardClientRouteWithChildren =
 interface AuthenticatedDashboardRouteChildren {
   AuthenticatedDashboardAdminRoute: typeof AuthenticatedDashboardAdminRoute
   AuthenticatedDashboardBuilderRoute: typeof AuthenticatedDashboardBuilderRoute
+  AuthenticatedDashboardCalculatorRoute: typeof AuthenticatedDashboardCalculatorRoute
   AuthenticatedDashboardClientRoute: typeof AuthenticatedDashboardClientRouteWithChildren
   AuthenticatedDashboardProfessionalRoute: typeof AuthenticatedDashboardProfessionalRoute
   AuthenticatedDashboardSupplierRoute: typeof AuthenticatedDashboardSupplierRoute
@@ -397,6 +418,8 @@ const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
   {
     AuthenticatedDashboardAdminRoute: AuthenticatedDashboardAdminRoute,
     AuthenticatedDashboardBuilderRoute: AuthenticatedDashboardBuilderRoute,
+    AuthenticatedDashboardCalculatorRoute:
+      AuthenticatedDashboardCalculatorRoute,
     AuthenticatedDashboardClientRoute:
       AuthenticatedDashboardClientRouteWithChildren,
     AuthenticatedDashboardProfessionalRoute:
@@ -437,13 +460,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
