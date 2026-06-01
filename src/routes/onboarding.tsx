@@ -39,8 +39,11 @@ function OnboardingPage() {
     }
     const { error } = await supabase
       .from("user_roles")
-      .insert({ user_id: userData.user.id, role: selected });
-    if (error && !error.message.includes("duplicate")) {
+      .upsert(
+        { user_id: userData.user.id, role: selected },
+        { onConflict: "user_id,role", ignoreDuplicates: true },
+      );
+    if (error) {
       toast.error(error.message);
       setLoading(false);
       return;

@@ -9,10 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WhyRouteImport } from './routes/why'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as ProblemRouteImport } from './routes/problem'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
@@ -28,9 +32,19 @@ import { Route as AuthenticatedDashboardAdminRouteImport } from './routes/_authe
 import { Route as AuthenticatedDashboardProjectsProjectIdRouteImport } from './routes/_authenticated/dashboard.projects.$projectId'
 import { Route as AuthenticatedDashboardClientProjectsNewRouteImport } from './routes/_authenticated/dashboard/client/projects/new'
 
+const WhyRoute = WhyRouteImport.update({
+  id: '/why',
+  path: '/why',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProblemRoute = ProblemRouteImport.update({
+  id: '/problem',
+  path: '/problem',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingRoute = OnboardingRouteImport.update({
@@ -43,9 +57,19 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedRoute = AuthenticatedRouteImport.update({
@@ -128,10 +152,14 @@ const AuthenticatedDashboardClientProjectsNewRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/impact': typeof ImpactRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
+  '/problem': typeof ProblemRoute
   '/signup': typeof SignupRoute
+  '/why': typeof WhyRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/construction/$slug': typeof ConstructionSlugRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -147,10 +175,14 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/impact': typeof ImpactRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
+  '/problem': typeof ProblemRoute
   '/signup': typeof SignupRoute
+  '/why': typeof WhyRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/construction/$slug': typeof ConstructionSlugRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -168,10 +200,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/impact': typeof ImpactRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
+  '/problem': typeof ProblemRoute
   '/signup': typeof SignupRoute
+  '/why': typeof WhyRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/construction/$slug': typeof ConstructionSlugRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -189,10 +225,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/contact'
+    | '/impact'
     | '/login'
     | '/onboarding'
+    | '/problem'
     | '/signup'
+    | '/why'
     | '/dashboard'
     | '/construction/$slug'
     | '/legal/$slug'
@@ -208,10 +248,14 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/contact'
+    | '/impact'
     | '/login'
     | '/onboarding'
+    | '/problem'
     | '/signup'
+    | '/why'
     | '/dashboard'
     | '/construction/$slug'
     | '/legal/$slug'
@@ -228,10 +272,14 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/about'
     | '/contact'
+    | '/impact'
     | '/login'
     | '/onboarding'
+    | '/problem'
     | '/signup'
+    | '/why'
     | '/_authenticated/dashboard'
     | '/construction/$slug'
     | '/legal/$slug'
@@ -249,10 +297,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  ImpactRoute: typeof ImpactRoute
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
+  ProblemRoute: typeof ProblemRoute
   SignupRoute: typeof SignupRoute
+  WhyRoute: typeof WhyRoute
   ConstructionSlugRoute: typeof ConstructionSlugRoute
   LegalSlugRoute: typeof LegalSlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
@@ -260,11 +312,25 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/why': {
+      id: '/why'
+      path: '/why'
+      fullPath: '/why'
+      preLoaderRoute: typeof WhyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup': {
       id: '/signup'
       path: '/signup'
       fullPath: '/signup'
       preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/problem': {
+      id: '/problem'
+      path: '/problem'
+      fullPath: '/problem'
+      preLoaderRoute: typeof ProblemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding': {
@@ -281,11 +347,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -449,10 +529,14 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
+  AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  ImpactRoute: ImpactRoute,
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
+  ProblemRoute: ProblemRoute,
   SignupRoute: SignupRoute,
+  WhyRoute: WhyRoute,
   ConstructionSlugRoute: ConstructionSlugRoute,
   LegalSlugRoute: LegalSlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
