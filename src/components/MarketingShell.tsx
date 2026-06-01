@@ -8,10 +8,11 @@ export function MarketingHeader() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/75 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:h-24 sm:px-6">
         <Logo size={44} className="sm:[&_img]:!h-[56px]" glow />
-        <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex">
-          <Link to="/" hash="pillars" className="transition hover:text-foreground">Why us</Link>
-          <Link to="/" hash="tiers" className="transition hover:text-foreground">Tiers</Link>
-          <Link to="/" hash="how-it-works" className="transition hover:text-foreground">How it works</Link>
+        <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground lg:flex">
+          <Link to="/why" className="transition hover:text-foreground">Why us</Link>
+          <Link to="/about" className="transition hover:text-foreground">About</Link>
+          <Link to="/problem" className="transition hover:text-foreground">The problem</Link>
+          <Link to="/impact" className="transition hover:text-foreground">Impact</Link>
           <Link to="/contact" className="transition hover:text-foreground">Contact</Link>
         </nav>
         <div className="flex items-center gap-2">
