@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.generate_supplier_voucher_code() FROM PUBLIC, anon, authenticated;

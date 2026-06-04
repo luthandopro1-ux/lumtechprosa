@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { Users, Briefcase, Ticket, ShieldCheck } from "lucide-react";
+import { Users, Briefcase, Ticket, ShieldCheck, Truck, FileText } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
@@ -11,7 +11,11 @@ export const Route = createFileRoute("/_authenticated/dashboard/admin")({
   head: () => ({ meta: [{ title: "Admin · Lum Tech Pro SA" }] }),
 });
 
-const NAV = [{ to: "/dashboard/admin", label: "Overview", icon: ShieldCheck }];
+const NAV = [
+  { to: "/dashboard/admin", label: "Overview", icon: ShieldCheck },
+  { to: "/dashboard/admin-suppliers", label: "Suppliers", icon: Truck },
+  { to: "/dashboard/admin-boq", label: "BOQ Queue", icon: FileText },
+];
 
 function AdminDashboard() {
   const { data } = useQuery({

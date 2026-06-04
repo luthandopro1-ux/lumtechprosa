@@ -23,13 +23,17 @@ import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as ConstructionSlugRouteImport } from './routes/construction.$slug'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDashboardSupplierOnboardingRouteImport } from './routes/_authenticated/dashboard.supplier-onboarding'
 import { Route as AuthenticatedDashboardSupplierRouteImport } from './routes/_authenticated/dashboard.supplier'
 import { Route as AuthenticatedDashboardProfessionalRouteImport } from './routes/_authenticated/dashboard.professional'
 import { Route as AuthenticatedDashboardClientRouteImport } from './routes/_authenticated/dashboard/client'
 import { Route as AuthenticatedDashboardCalculatorRouteImport } from './routes/_authenticated/dashboard.calculator'
 import { Route as AuthenticatedDashboardBuilderRouteImport } from './routes/_authenticated/dashboard.builder'
+import { Route as AuthenticatedDashboardAdminSuppliersRouteImport } from './routes/_authenticated/dashboard.admin-suppliers'
+import { Route as AuthenticatedDashboardAdminBoqRouteImport } from './routes/_authenticated/dashboard.admin-boq'
 import { Route as AuthenticatedDashboardAdminRouteImport } from './routes/_authenticated/dashboard.admin'
 import { Route as AuthenticatedDashboardProjectsProjectIdRouteImport } from './routes/_authenticated/dashboard.projects.$projectId'
+import { Route as AuthenticatedDashboardBoqRequestProjectIdRouteImport } from './routes/_authenticated/dashboard.boq-request.$projectId'
 import { Route as AuthenticatedDashboardClientProjectsNewRouteImport } from './routes/_authenticated/dashboard/client/projects/new'
 
 const WhyRoute = WhyRouteImport.update({
@@ -101,6 +105,12 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedDashboardSupplierOnboardingRoute =
+  AuthenticatedDashboardSupplierOnboardingRouteImport.update({
+    id: '/supplier-onboarding',
+    path: '/supplier-onboarding',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 const AuthenticatedDashboardSupplierRoute =
   AuthenticatedDashboardSupplierRouteImport.update({
     id: '/supplier',
@@ -131,6 +141,18 @@ const AuthenticatedDashboardBuilderRoute =
     path: '/builder',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
+const AuthenticatedDashboardAdminSuppliersRoute =
+  AuthenticatedDashboardAdminSuppliersRouteImport.update({
+    id: '/admin-suppliers',
+    path: '/admin-suppliers',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardAdminBoqRoute =
+  AuthenticatedDashboardAdminBoqRouteImport.update({
+    id: '/admin-boq',
+    path: '/admin-boq',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 const AuthenticatedDashboardAdminRoute =
   AuthenticatedDashboardAdminRouteImport.update({
     id: '/admin',
@@ -141,6 +163,12 @@ const AuthenticatedDashboardProjectsProjectIdRoute =
   AuthenticatedDashboardProjectsProjectIdRouteImport.update({
     id: '/projects/$projectId',
     path: '/projects/$projectId',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardBoqRequestProjectIdRoute =
+  AuthenticatedDashboardBoqRequestProjectIdRouteImport.update({
+    id: '/boq-request/$projectId',
+    path: '/boq-request/$projectId',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
 const AuthenticatedDashboardClientProjectsNewRoute =
@@ -165,11 +193,15 @@ export interface FileRoutesByFullPath {
   '/legal/$slug': typeof LegalSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
+  '/dashboard/admin-boq': typeof AuthenticatedDashboardAdminBoqRoute
+  '/dashboard/admin-suppliers': typeof AuthenticatedDashboardAdminSuppliersRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/calculator': typeof AuthenticatedDashboardCalculatorRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
   '/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
   '/dashboard/supplier': typeof AuthenticatedDashboardSupplierRoute
+  '/dashboard/supplier-onboarding': typeof AuthenticatedDashboardSupplierOnboardingRoute
+  '/dashboard/boq-request/$projectId': typeof AuthenticatedDashboardBoqRequestProjectIdRoute
   '/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
   '/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
@@ -188,11 +220,15 @@ export interface FileRoutesByTo {
   '/legal/$slug': typeof LegalSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
+  '/dashboard/admin-boq': typeof AuthenticatedDashboardAdminBoqRoute
+  '/dashboard/admin-suppliers': typeof AuthenticatedDashboardAdminSuppliersRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/calculator': typeof AuthenticatedDashboardCalculatorRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
   '/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
   '/dashboard/supplier': typeof AuthenticatedDashboardSupplierRoute
+  '/dashboard/supplier-onboarding': typeof AuthenticatedDashboardSupplierOnboardingRoute
+  '/dashboard/boq-request/$projectId': typeof AuthenticatedDashboardBoqRequestProjectIdRoute
   '/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
   '/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
@@ -213,11 +249,15 @@ export interface FileRoutesById {
   '/legal/$slug': typeof LegalSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/_authenticated/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
+  '/_authenticated/dashboard/admin-boq': typeof AuthenticatedDashboardAdminBoqRoute
+  '/_authenticated/dashboard/admin-suppliers': typeof AuthenticatedDashboardAdminSuppliersRoute
   '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/_authenticated/dashboard/calculator': typeof AuthenticatedDashboardCalculatorRoute
   '/_authenticated/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
   '/_authenticated/dashboard/professional': typeof AuthenticatedDashboardProfessionalRoute
   '/_authenticated/dashboard/supplier': typeof AuthenticatedDashboardSupplierRoute
+  '/_authenticated/dashboard/supplier-onboarding': typeof AuthenticatedDashboardSupplierOnboardingRoute
+  '/_authenticated/dashboard/boq-request/$projectId': typeof AuthenticatedDashboardBoqRequestProjectIdRoute
   '/_authenticated/dashboard/projects/$projectId': typeof AuthenticatedDashboardProjectsProjectIdRoute
   '/_authenticated/dashboard/client/projects/new': typeof AuthenticatedDashboardClientProjectsNewRoute
 }
@@ -238,11 +278,15 @@ export interface FileRouteTypes {
     | '/legal/$slug'
     | '/services/$slug'
     | '/dashboard/admin'
+    | '/dashboard/admin-boq'
+    | '/dashboard/admin-suppliers'
     | '/dashboard/builder'
     | '/dashboard/calculator'
     | '/dashboard/client'
     | '/dashboard/professional'
     | '/dashboard/supplier'
+    | '/dashboard/supplier-onboarding'
+    | '/dashboard/boq-request/$projectId'
     | '/dashboard/projects/$projectId'
     | '/dashboard/client/projects/new'
   fileRoutesByTo: FileRoutesByTo
@@ -261,11 +305,15 @@ export interface FileRouteTypes {
     | '/legal/$slug'
     | '/services/$slug'
     | '/dashboard/admin'
+    | '/dashboard/admin-boq'
+    | '/dashboard/admin-suppliers'
     | '/dashboard/builder'
     | '/dashboard/calculator'
     | '/dashboard/client'
     | '/dashboard/professional'
     | '/dashboard/supplier'
+    | '/dashboard/supplier-onboarding'
+    | '/dashboard/boq-request/$projectId'
     | '/dashboard/projects/$projectId'
     | '/dashboard/client/projects/new'
   id:
@@ -285,11 +333,15 @@ export interface FileRouteTypes {
     | '/legal/$slug'
     | '/services/$slug'
     | '/_authenticated/dashboard/admin'
+    | '/_authenticated/dashboard/admin-boq'
+    | '/_authenticated/dashboard/admin-suppliers'
     | '/_authenticated/dashboard/builder'
     | '/_authenticated/dashboard/calculator'
     | '/_authenticated/dashboard/client'
     | '/_authenticated/dashboard/professional'
     | '/_authenticated/dashboard/supplier'
+    | '/_authenticated/dashboard/supplier-onboarding'
+    | '/_authenticated/dashboard/boq-request/$projectId'
     | '/_authenticated/dashboard/projects/$projectId'
     | '/_authenticated/dashboard/client/projects/new'
   fileRoutesById: FileRoutesById
@@ -410,6 +462,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/dashboard/supplier-onboarding': {
+      id: '/_authenticated/dashboard/supplier-onboarding'
+      path: '/supplier-onboarding'
+      fullPath: '/dashboard/supplier-onboarding'
+      preLoaderRoute: typeof AuthenticatedDashboardSupplierOnboardingRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
     '/_authenticated/dashboard/supplier': {
       id: '/_authenticated/dashboard/supplier'
       path: '/supplier'
@@ -445,6 +504,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardBuilderRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
+    '/_authenticated/dashboard/admin-suppliers': {
+      id: '/_authenticated/dashboard/admin-suppliers'
+      path: '/admin-suppliers'
+      fullPath: '/dashboard/admin-suppliers'
+      preLoaderRoute: typeof AuthenticatedDashboardAdminSuppliersRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/admin-boq': {
+      id: '/_authenticated/dashboard/admin-boq'
+      path: '/admin-boq'
+      fullPath: '/dashboard/admin-boq'
+      preLoaderRoute: typeof AuthenticatedDashboardAdminBoqRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
     '/_authenticated/dashboard/admin': {
       id: '/_authenticated/dashboard/admin'
       path: '/admin'
@@ -457,6 +530,13 @@ declare module '@tanstack/react-router' {
       path: '/projects/$projectId'
       fullPath: '/dashboard/projects/$projectId'
       preLoaderRoute: typeof AuthenticatedDashboardProjectsProjectIdRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/boq-request/$projectId': {
+      id: '/_authenticated/dashboard/boq-request/$projectId'
+      path: '/boq-request/$projectId'
+      fullPath: '/dashboard/boq-request/$projectId'
+      preLoaderRoute: typeof AuthenticatedDashboardBoqRequestProjectIdRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
     '/_authenticated/dashboard/client/projects/new': {
@@ -486,17 +566,24 @@ const AuthenticatedDashboardClientRouteWithChildren =
 
 interface AuthenticatedDashboardRouteChildren {
   AuthenticatedDashboardAdminRoute: typeof AuthenticatedDashboardAdminRoute
+  AuthenticatedDashboardAdminBoqRoute: typeof AuthenticatedDashboardAdminBoqRoute
+  AuthenticatedDashboardAdminSuppliersRoute: typeof AuthenticatedDashboardAdminSuppliersRoute
   AuthenticatedDashboardBuilderRoute: typeof AuthenticatedDashboardBuilderRoute
   AuthenticatedDashboardCalculatorRoute: typeof AuthenticatedDashboardCalculatorRoute
   AuthenticatedDashboardClientRoute: typeof AuthenticatedDashboardClientRouteWithChildren
   AuthenticatedDashboardProfessionalRoute: typeof AuthenticatedDashboardProfessionalRoute
   AuthenticatedDashboardSupplierRoute: typeof AuthenticatedDashboardSupplierRoute
+  AuthenticatedDashboardSupplierOnboardingRoute: typeof AuthenticatedDashboardSupplierOnboardingRoute
+  AuthenticatedDashboardBoqRequestProjectIdRoute: typeof AuthenticatedDashboardBoqRequestProjectIdRoute
   AuthenticatedDashboardProjectsProjectIdRoute: typeof AuthenticatedDashboardProjectsProjectIdRoute
 }
 
 const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
   {
     AuthenticatedDashboardAdminRoute: AuthenticatedDashboardAdminRoute,
+    AuthenticatedDashboardAdminBoqRoute: AuthenticatedDashboardAdminBoqRoute,
+    AuthenticatedDashboardAdminSuppliersRoute:
+      AuthenticatedDashboardAdminSuppliersRoute,
     AuthenticatedDashboardBuilderRoute: AuthenticatedDashboardBuilderRoute,
     AuthenticatedDashboardCalculatorRoute:
       AuthenticatedDashboardCalculatorRoute,
@@ -505,6 +592,10 @@ const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
     AuthenticatedDashboardProfessionalRoute:
       AuthenticatedDashboardProfessionalRoute,
     AuthenticatedDashboardSupplierRoute: AuthenticatedDashboardSupplierRoute,
+    AuthenticatedDashboardSupplierOnboardingRoute:
+      AuthenticatedDashboardSupplierOnboardingRoute,
+    AuthenticatedDashboardBoqRequestProjectIdRoute:
+      AuthenticatedDashboardBoqRequestProjectIdRoute,
     AuthenticatedDashboardProjectsProjectIdRoute:
       AuthenticatedDashboardProjectsProjectIdRoute,
   }
