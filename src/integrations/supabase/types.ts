@@ -44,6 +44,51 @@ export type Database = {
         }
         Relationships: []
       }
+      artisan_badges: {
+        Row: {
+          badge_code: string
+          created_at: string
+          description: string | null
+          expires_at: string | null
+          icon_url: string | null
+          id: string
+          issued_at: string | null
+          issuer: string | null
+          title: string
+          updated_at: string
+          user_id: string
+          verified: boolean
+        }
+        Insert: {
+          badge_code: string
+          created_at?: string
+          description?: string | null
+          expires_at?: string | null
+          icon_url?: string | null
+          id?: string
+          issued_at?: string | null
+          issuer?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+          verified?: boolean
+        }
+        Update: {
+          badge_code?: string
+          created_at?: string
+          description?: string | null
+          expires_at?: string | null
+          icon_url?: string | null
+          id?: string
+          issued_at?: string | null
+          issuer?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+          verified?: boolean
+        }
+        Relationships: []
+      }
       boq_requests: {
         Row: {
           created_at: string
@@ -234,6 +279,112 @@ export type Database = {
           nhbrc_number?: string | null
         }
         Relationships: []
+      }
+      project_documents: {
+        Row: {
+          created_at: string
+          doc_type: string
+          id: string
+          mime_type: string | null
+          project_id: string
+          signed_by_builder_at: string | null
+          signed_by_client_at: string | null
+          signed_by_professional_at: string | null
+          size_bytes: number | null
+          storage_path: string
+          title: string
+          updated_at: string
+          uploaded_by: string
+        }
+        Insert: {
+          created_at?: string
+          doc_type: string
+          id?: string
+          mime_type?: string | null
+          project_id: string
+          signed_by_builder_at?: string | null
+          signed_by_client_at?: string | null
+          signed_by_professional_at?: string | null
+          size_bytes?: number | null
+          storage_path: string
+          title: string
+          updated_at?: string
+          uploaded_by: string
+        }
+        Update: {
+          created_at?: string
+          doc_type?: string
+          id?: string
+          mime_type?: string | null
+          project_id?: string
+          signed_by_builder_at?: string | null
+          signed_by_client_at?: string | null
+          signed_by_professional_at?: string | null
+          size_bytes?: number | null
+          storage_path?: string
+          title?: string
+          updated_at?: string
+          uploaded_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_documents_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_milestones: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          description: string | null
+          due_date: string | null
+          id: string
+          ordinal: number
+          progress_pct: number
+          project_id: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          ordinal?: number
+          progress_pct?: number
+          project_id: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          ordinal?: number
+          progress_pct?: number
+          project_id?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_milestones_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       projects: {
         Row: {
