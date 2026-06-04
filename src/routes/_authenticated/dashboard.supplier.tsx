@@ -26,6 +26,17 @@ function SupplierDashboard() {
   const qc = useQueryClient();
   const [code, setCode] = useState("");
 
+  const { data: profile } = useQuery({
+    queryKey: ["supplier", "profile"],
+    queryFn: async () => {
+      const { data: u } = await supabase.auth.getUser();
+      if (!u.user) return null;
+      const { data } = await supabase.from("suppliers").select("status,voucher_code,voucher_expires_at,company_name").eq("user_id", u.user.id).maybeSingle();
+      return data;
+    },
+  });
+
+
   const { data: redeemed = [] } = useQuery({
     queryKey: ["vouchers", "supplier", "redeemed"],
     queryFn: async () => {
@@ -70,6 +81,25 @@ function SupplierDashboard() {
     <AppShell role="supplier" nav={NAV}>
       <h1 className="font-display text-3xl font-bold tracking-tight">Supplier Portal</h1>
       <p className="mt-1 text-sm text-muted-foreground">Redeem closed-loop construction vouchers.</p>
+
+      {!profile ? (
+        <Link to="/dashboard/supplier-onboarding" className="mt-6 flex items-center justify-between gap-4 rounded-xl border border-primary/40 bg-primary/10 p-5 hover:bg-primary/20">
+          <div>
+            <div className="font-display font-semibold">Complete supplier onboarding</div>
+            <p className="text-sm text-muted-foreground">Submit your company profile, banking details and product categories to receive your voucher.</p>
+          </div>
+          <ArrowRight className="h-5 w-5 text-primary" />
+        </Link>
+      ) : (
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border bg-card p-5">
+          <div>
+            <div className="font-display font-semibold">{profile.company_name}</div>
+            {profile.voucher_code && <div className="mt-1 font-mono text-sm text-primary">{profile.voucher_code}</div>}
+          </div>
+          <Badge variant={profile.status === "approved" ? "default" : "outline"}>{profile.status}</Badge>
+        </div>
+      )}
+
 
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
         <div className="rounded-xl border border-border bg-card p-6">
