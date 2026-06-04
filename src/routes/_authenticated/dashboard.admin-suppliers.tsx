@@ -37,16 +37,19 @@ function AdminSuppliers() {
   });
 
   const update = useMutation({
-    mutationFn: async ({ id, status, reason }: { id: string; status: string; reason?: string }) => {
+    mutationFn: async ({ id, status, reason }: { id: string; status: "approved" | "suspended" | "rejected"; reason?: string }) => {
       const { data: u } = await supabase.auth.getUser();
-      const patch: Record<string, unknown> = { status };
-      if (status === "approved") patch.approved_by = u.user?.id;
+      const patch: {
+        status: "approved" | "suspended" | "rejected";
+        approved_by?: string | null;
+        rejection_reason?: string;
+      } = { status };
+      if (status === "approved") patch.approved_by = u.user?.id ?? null;
       if (reason) patch.rejection_reason = reason;
       const { error } = await supabase.from("suppliers").update(patch).eq("id", id);
       if (error) throw error;
-      // audit log
       await supabase.from("admin_audit_log").insert({
-        actor_id: u.user?.id,
+        actor_id: u.user?.id ?? null,
         action: `supplier:${status}`,
         target_table: "suppliers",
         target_id: id,

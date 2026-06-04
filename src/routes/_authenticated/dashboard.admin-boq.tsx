@@ -43,22 +43,25 @@ function AdminBoq() {
 
   const advance = useMutation({
     mutationFn: async (row: Boq) => {
-      const next = NEXT_STATUS[row.status as string];
+      const next = NEXT_STATUS[row.status as string] as "paid" | "in_review" | "delivered" | undefined;
       if (!next) return;
-      const patch: Record<string, unknown> = { status: next };
+      const patch: {
+        status: "paid" | "in_review" | "delivered";
+        paid_at?: string;
+        delivered_at?: string;
+      } = { status: next };
       if (next === "paid") patch.paid_at = new Date().toISOString();
       if (next === "delivered") patch.delivered_at = new Date().toISOString();
       const { error } = await supabase.from("boq_requests").update(patch).eq("id", row.id);
       if (error) throw error;
 
-      // record ledger entry on payment
-      if (next === "paid" && row.project_id) {
+      if (next === "paid" && typeof row.project_id === "string") {
         await supabase.from("escrow_ledger").insert({
           project_id: row.project_id,
           boq_request_id: row.id,
           entry_type: "boq_fee",
-          amount_cents: row.fee_cents,
-          memo: `BOQ ${row.service_type} fee paid`,
+          amount_cents: row.fee_cents as number,
+          memo: `BOQ ${row.service_type as string} fee paid`,
         });
       }
     },
