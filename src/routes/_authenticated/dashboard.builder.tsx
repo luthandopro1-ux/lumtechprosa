@@ -4,6 +4,11 @@ import { LayoutDashboard, Wallet, HardHat, FolderOpen } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import { supabase } from "@/integrations/supabase/client";
 import { formatZar, centsToZar } from "@/lib/format";
+import { EscrowBalanceWidget } from "@/components/dashboard/EscrowBalanceWidget";
+import { VoucherWallet } from "@/components/dashboard/VoucherWallet";
+import { MilestoneTracker } from "@/components/dashboard/MilestoneTracker";
+import { useAuth } from "@/hooks/use-auth";
+
 
 export const Route = createFileRoute("/_authenticated/dashboard/builder")({
   component: BuilderDashboard,
@@ -41,10 +46,25 @@ function BuilderDashboard() {
         <Metric icon={Wallet} label="Voucher wallet" value={formatZar(0)} />
       </div>
 
+      <div className="mt-8 grid gap-6 lg:grid-cols-2">
+        <EscrowBalanceWidget />
+        {assigned[0] && <MilestoneTracker projectId={assigned[0].id} />}
+      </div>
+
+      <div className="mt-6">
+        <BuilderVoucherWallet />
+      </div>
+
       <Section title="My active projects" projects={assigned} isLoading={isLoading} empty="No assigned projects yet." />
       <Section title="Open opportunities in KZN" projects={open} isLoading={isLoading} empty="No open projects right now." />
     </AppShell>
   );
+}
+
+function BuilderVoucherWallet() {
+  const { user } = useAuth();
+  if (!user) return null;
+  return <VoucherWallet userId={user.id} />;
 }
 
 function Metric({ icon: Icon, label, value }: { icon: typeof HardHat; label: string; value: string }) {

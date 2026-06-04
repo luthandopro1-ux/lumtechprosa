@@ -5,6 +5,11 @@ import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { formatZar, centsToZar } from "@/lib/format";
+import { EscrowBalanceWidget } from "@/components/dashboard/EscrowBalanceWidget";
+import { MilestoneTracker } from "@/components/dashboard/MilestoneTracker";
+import { ContractView } from "@/components/dashboard/ContractView";
+
+
 
 export const Route = createFileRoute("/_authenticated/dashboard/client")({
   component: ClientDashboard,
@@ -51,12 +56,22 @@ function ClientDashboard() {
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <MetricCard
           icon={ShieldCheck}
-          label="Total locked in TradeSafe"
+          label="Total locked in escrow"
           value={formatZar(totalEscrow)}
         />
         <MetricCard icon={Wallet} label="Funds disbursed" value={formatZar(0)} hint="Pending milestone approvals" />
         <MetricCard icon={Wallet} label="Voucher balance" value={formatZar(0)} hint="Across all active projects" />
       </div>
+
+      <div className="mt-8 grid gap-6 lg:grid-cols-2">
+        <EscrowBalanceWidget />
+        {projects[0] && <MilestoneTracker projectId={projects[0].id} />}
+      </div>
+      {projects[0] && (
+        <div className="mt-6">
+          <ContractView projectId={projects[0].id} />
+        </div>
+      )}
 
       <div className="mt-10">
         <h2 className="font-display text-xl font-semibold">Active projects</h2>
