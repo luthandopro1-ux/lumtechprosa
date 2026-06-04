@@ -34,7 +34,7 @@ function AdminBoq() {
     queryKey: ["admin", "boq"],
     queryFn: async () => {
       const { data } = await supabase
-        .from("boq_requests" as never)
+        .from("boq_requests")
         .select("*")
         .order("created_at", { ascending: false });
       return (data ?? []) as unknown as Boq[];
@@ -48,12 +48,12 @@ function AdminBoq() {
       const patch: Record<string, unknown> = { status: next };
       if (next === "paid") patch.paid_at = new Date().toISOString();
       if (next === "delivered") patch.delivered_at = new Date().toISOString();
-      const { error } = await supabase.from("boq_requests" as never).update(patch).eq("id", row.id);
+      const { error } = await supabase.from("boq_requests").update(patch).eq("id", row.id);
       if (error) throw error;
 
       // record ledger entry on payment
       if (next === "paid" && row.project_id) {
-        await supabase.from("escrow_ledger" as never).insert({
+        await supabase.from("escrow_ledger").insert({
           project_id: row.project_id,
           boq_request_id: row.id,
           entry_type: "boq_fee",

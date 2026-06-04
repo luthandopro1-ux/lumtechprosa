@@ -28,7 +28,7 @@ function AdminSuppliers() {
   const { data: suppliers = [] } = useQuery({
     queryKey: ["admin", "suppliers", filter],
     queryFn: async () => {
-      let q = supabase.from("suppliers" as never).select("*").order("created_at", { ascending: false });
+      let q = supabase.from("suppliers").select("*").order("created_at", { ascending: false });
       if (filter !== "all") q = q.eq("status", filter);
       const { data, error } = await q;
       if (error) throw error;
@@ -42,10 +42,10 @@ function AdminSuppliers() {
       const patch: Record<string, unknown> = { status };
       if (status === "approved") patch.approved_by = u.user?.id;
       if (reason) patch.rejection_reason = reason;
-      const { error } = await supabase.from("suppliers" as never).update(patch).eq("id", id);
+      const { error } = await supabase.from("suppliers").update(patch).eq("id", id);
       if (error) throw error;
       // audit log
-      await supabase.from("admin_audit_log" as never).insert({
+      await supabase.from("admin_audit_log").insert({
         actor_id: u.user?.id,
         action: `supplier:${status}`,
         target_table: "suppliers",

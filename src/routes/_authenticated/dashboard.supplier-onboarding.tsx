@@ -47,7 +47,7 @@ function SupplierOnboarding() {
       const { data: u } = await supabase.auth.getUser();
       if (!u.user) return null;
       const { data } = await supabase
-        .from("suppliers" as never)
+        .from("suppliers")
         .select("*")
         .eq("user_id", u.user.id)
         .maybeSingle();
@@ -81,8 +81,8 @@ function SupplierOnboarding() {
       if (!u.user) throw new Error("Not signed in");
       const payload = { ...form, user_id: u.user.id };
       const { error } = existing
-        ? await supabase.from("suppliers" as never).update(payload).eq("user_id", u.user.id)
-        : await supabase.from("suppliers" as never).insert(payload);
+        ? await supabase.from("suppliers").update(payload).eq("user_id", u.user.id)
+        : await supabase.from("suppliers").insert(payload);
       if (error) throw error;
     },
     onSuccess: () => {

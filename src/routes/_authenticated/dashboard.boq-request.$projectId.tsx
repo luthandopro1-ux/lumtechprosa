@@ -57,7 +57,7 @@ function BoqRequest() {
       const opt = OPTIONS.find((o) => o.type === selected)!;
       const { data: u } = await supabase.auth.getUser();
       if (!u.user) throw new Error("Not signed in");
-      const { error } = await supabase.from("boq_requests" as never).insert({
+      const { error } = await supabase.from("boq_requests").insert({
         project_id: projectId,
         requested_by: u.user.id,
         service_type: selected,
