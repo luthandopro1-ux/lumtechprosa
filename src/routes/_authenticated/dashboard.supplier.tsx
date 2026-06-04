@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Ticket, Loader2, QrCode } from "lucide-react";
+import { Ticket, Loader2, QrCode, Truck, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,10 @@ export const Route = createFileRoute("/_authenticated/dashboard/supplier")({
   head: () => ({ meta: [{ title: "Supplier Portal · Lum Tech Pro SA" }] }),
 });
 
-const NAV = [{ to: "/dashboard/supplier", label: "Voucher portal", icon: QrCode }];
+const NAV = [
+  { to: "/dashboard/supplier", label: "Voucher portal", icon: QrCode },
+  { to: "/dashboard/supplier-onboarding", label: "Onboarding", icon: Truck },
+];
 
 function SupplierDashboard() {
   const qc = useQueryClient();
