@@ -57,6 +57,15 @@ function BuilderDashboard() {
 
       <Section title="My active projects" projects={assigned} isLoading={isLoading} empty="No assigned projects yet." />
       <Section title="Open opportunities in KZN" projects={open} isLoading={isLoading} empty="No open projects right now." />
+    </AppShell>
+  );
+}
+
+function BuilderVoucherWallet() {
+  const { user } = useAuth();
+  if (!user) return null;
+  return <VoucherWallet userId={user.id} />;
+}
 
     </AppShell>
   );
