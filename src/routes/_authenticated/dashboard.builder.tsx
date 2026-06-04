@@ -67,10 +67,6 @@ function BuilderVoucherWallet() {
   return <VoucherWallet userId={user.id} />;
 }
 
-    </AppShell>
-  );
-}
-
 function Metric({ icon: Icon, label, value }: { icon: typeof HardHat; label: string; value: string }) {
   return (
     <div className="rounded-xl border border-border bg-card p-5">
