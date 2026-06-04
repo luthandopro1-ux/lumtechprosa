@@ -29,6 +29,7 @@ import { Route as AuthenticatedDashboardProfessionalRouteImport } from './routes
 import { Route as AuthenticatedDashboardClientRouteImport } from './routes/_authenticated/dashboard/client'
 import { Route as AuthenticatedDashboardCalculatorRouteImport } from './routes/_authenticated/dashboard.calculator'
 import { Route as AuthenticatedDashboardBuilderRouteImport } from './routes/_authenticated/dashboard.builder'
+import { Route as AuthenticatedDashboardArtisanRouteImport } from './routes/_authenticated/dashboard.artisan'
 import { Route as AuthenticatedDashboardAdminSuppliersRouteImport } from './routes/_authenticated/dashboard.admin-suppliers'
 import { Route as AuthenticatedDashboardAdminBoqRouteImport } from './routes/_authenticated/dashboard.admin-boq'
 import { Route as AuthenticatedDashboardAdminRouteImport } from './routes/_authenticated/dashboard.admin'
@@ -141,6 +142,12 @@ const AuthenticatedDashboardBuilderRoute =
     path: '/builder',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
+const AuthenticatedDashboardArtisanRoute =
+  AuthenticatedDashboardArtisanRouteImport.update({
+    id: '/artisan',
+    path: '/artisan',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 const AuthenticatedDashboardAdminSuppliersRoute =
   AuthenticatedDashboardAdminSuppliersRouteImport.update({
     id: '/admin-suppliers',
@@ -195,6 +202,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/admin-boq': typeof AuthenticatedDashboardAdminBoqRoute
   '/dashboard/admin-suppliers': typeof AuthenticatedDashboardAdminSuppliersRoute
+  '/dashboard/artisan': typeof AuthenticatedDashboardArtisanRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/calculator': typeof AuthenticatedDashboardCalculatorRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
@@ -222,6 +230,7 @@ export interface FileRoutesByTo {
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/admin-boq': typeof AuthenticatedDashboardAdminBoqRoute
   '/dashboard/admin-suppliers': typeof AuthenticatedDashboardAdminSuppliersRoute
+  '/dashboard/artisan': typeof AuthenticatedDashboardArtisanRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/dashboard/calculator': typeof AuthenticatedDashboardCalculatorRoute
   '/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
@@ -251,6 +260,7 @@ export interface FileRoutesById {
   '/_authenticated/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/_authenticated/dashboard/admin-boq': typeof AuthenticatedDashboardAdminBoqRoute
   '/_authenticated/dashboard/admin-suppliers': typeof AuthenticatedDashboardAdminSuppliersRoute
+  '/_authenticated/dashboard/artisan': typeof AuthenticatedDashboardArtisanRoute
   '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
   '/_authenticated/dashboard/calculator': typeof AuthenticatedDashboardCalculatorRoute
   '/_authenticated/dashboard/client': typeof AuthenticatedDashboardClientRouteWithChildren
@@ -280,6 +290,7 @@ export interface FileRouteTypes {
     | '/dashboard/admin'
     | '/dashboard/admin-boq'
     | '/dashboard/admin-suppliers'
+    | '/dashboard/artisan'
     | '/dashboard/builder'
     | '/dashboard/calculator'
     | '/dashboard/client'
@@ -307,6 +318,7 @@ export interface FileRouteTypes {
     | '/dashboard/admin'
     | '/dashboard/admin-boq'
     | '/dashboard/admin-suppliers'
+    | '/dashboard/artisan'
     | '/dashboard/builder'
     | '/dashboard/calculator'
     | '/dashboard/client'
@@ -335,6 +347,7 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard/admin'
     | '/_authenticated/dashboard/admin-boq'
     | '/_authenticated/dashboard/admin-suppliers'
+    | '/_authenticated/dashboard/artisan'
     | '/_authenticated/dashboard/builder'
     | '/_authenticated/dashboard/calculator'
     | '/_authenticated/dashboard/client'
@@ -504,6 +517,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardBuilderRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
+    '/_authenticated/dashboard/artisan': {
+      id: '/_authenticated/dashboard/artisan'
+      path: '/artisan'
+      fullPath: '/dashboard/artisan'
+      preLoaderRoute: typeof AuthenticatedDashboardArtisanRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
     '/_authenticated/dashboard/admin-suppliers': {
       id: '/_authenticated/dashboard/admin-suppliers'
       path: '/admin-suppliers'
@@ -568,6 +588,7 @@ interface AuthenticatedDashboardRouteChildren {
   AuthenticatedDashboardAdminRoute: typeof AuthenticatedDashboardAdminRoute
   AuthenticatedDashboardAdminBoqRoute: typeof AuthenticatedDashboardAdminBoqRoute
   AuthenticatedDashboardAdminSuppliersRoute: typeof AuthenticatedDashboardAdminSuppliersRoute
+  AuthenticatedDashboardArtisanRoute: typeof AuthenticatedDashboardArtisanRoute
   AuthenticatedDashboardBuilderRoute: typeof AuthenticatedDashboardBuilderRoute
   AuthenticatedDashboardCalculatorRoute: typeof AuthenticatedDashboardCalculatorRoute
   AuthenticatedDashboardClientRoute: typeof AuthenticatedDashboardClientRouteWithChildren
@@ -584,6 +605,7 @@ const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
     AuthenticatedDashboardAdminBoqRoute: AuthenticatedDashboardAdminBoqRoute,
     AuthenticatedDashboardAdminSuppliersRoute:
       AuthenticatedDashboardAdminSuppliersRoute,
+    AuthenticatedDashboardArtisanRoute: AuthenticatedDashboardArtisanRoute,
     AuthenticatedDashboardBuilderRoute: AuthenticatedDashboardBuilderRoute,
     AuthenticatedDashboardCalculatorRoute:
       AuthenticatedDashboardCalculatorRoute,
@@ -635,3 +657,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
