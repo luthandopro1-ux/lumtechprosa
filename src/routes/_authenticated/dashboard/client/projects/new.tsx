@@ -176,11 +176,7 @@ function NewProjectWizard() {
             <div className="mt-6 space-y-3 border-t border-border pt-4 text-sm">
               <Row label="Project value" value={formatZar(budgetNum)} />
               <Row
-                label={`Client fee (${breakdown.clientPct}%)`}
-                value={formatZar(breakdown.clientFee)}
-              />
-              <Row
-                label={`Builder fee (${breakdown.builderPct}%)`}
+                label={`Platform fee (${breakdown.builderPct}%) — deducted from contractor payout`}
                 value={formatZar(breakdown.builderFee)}
                 muted
               />
@@ -192,9 +188,13 @@ function NewProjectWizard() {
               )}
               <div className="my-3 h-px bg-border" />
               <Row
-                label="Total escrow deposit"
+                label="Total escrow deposit (client funds)"
                 value={formatZar(breakdown.totalEscrow)}
                 bold
+              />
+              <Row
+                label="Contractor net payout"
+                value={formatZar(breakdown.contractorNet)}
               />
             </div>
           </div>

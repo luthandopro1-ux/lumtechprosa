@@ -54,8 +54,8 @@ function CalculatorPage() {
         <div>
           <h1 className="font-display text-2xl font-bold">Internal Fee & Escrow Engine</h1>
           <p className="text-sm text-muted-foreground">
-            Tier brackets: 0–R150k (10%) · R150k–R1.5M (8%) · R1.5M+ (6%). Split 50/50 between
-            client and contractor.
+            Tier 1 R0–R250k (10%) · Tier 2 R250k–R1.5M (8%) · Tier 3 R1.5M+ (6%). Platform fee
+            deducted from contractor payout. Client funds project value into TradeSafe escrow.
           </p>
         </div>
       </div>
@@ -102,12 +102,7 @@ function CalculatorPage() {
               <CardDescription>{breakdown.tierLabel}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2 text-sm">
-              <Row label="Base quote" value={formatZar(submitted)} />
-              <Row
-                label={`TradeSafe & PM protection (${breakdown.clientPct}%)`}
-                value={formatZar(breakdown.clientFee)}
-                emphasis="fee"
-              />
+              <Row label="Project value (funded to escrow)" value={formatZar(submitted)} strong />
               {breakdown.professionalPct > 0 && (
                 <Row
                   label={`In-house QS / Engineer (${breakdown.professionalPct}%)`}
