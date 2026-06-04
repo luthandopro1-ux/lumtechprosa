@@ -126,15 +126,15 @@ function SupplierOnboarding() {
         {status && <StatusBadge status={status} />}
       </div>
 
-      {existing?.voucher_code && (
+      {typeof existing?.voucher_code === "string" && (
         <div className="mt-6 rounded-xl border border-primary/40 bg-card p-6 shadow-glow">
           <div className="text-xs uppercase tracking-wider text-primary">Issued voucher</div>
           <div className="mt-2 font-mono text-2xl font-bold tracking-wider">
-            {existing.voucher_code as string}
+            {existing.voucher_code}
           </div>
-          {existing.voucher_expires_at != null && (
+          {typeof existing.voucher_expires_at === "string" && (
             <div className="mt-1 text-xs text-muted-foreground">
-              Expires {new Date(existing.voucher_expires_at as string).toLocaleDateString()}
+              Expires {new Date(existing.voucher_expires_at).toLocaleDateString()}
             </div>
           )}
         </div>
