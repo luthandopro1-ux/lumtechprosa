@@ -14,10 +14,8 @@ export const Route = createFileRoute("/_authenticated/dashboard/admin-suppliers"
   head: () => ({ meta: [{ title: "Supplier Approvals · Admin" }] }),
 });
 
-const NAV = [
-  { to: "/dashboard/admin", label: "Overview", icon: ShieldCheck },
-  { to: "/dashboard/admin-suppliers", label: "Suppliers", icon: Truck },
-];
+import { ADMIN_NAV } from "@/lib/admin-nav";
+const NAV = ADMIN_NAV;
 
 type Supplier = Record<string, unknown> & { id: string };
 
