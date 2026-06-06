@@ -13,11 +13,8 @@ export const Route = createFileRoute("/_authenticated/dashboard/admin-boq")({
   head: () => ({ meta: [{ title: "BOQ Queue · Admin" }] }),
 });
 
-const NAV = [
-  { to: "/dashboard/admin", label: "Overview", icon: ShieldCheck },
-  { to: "/dashboard/admin-suppliers", label: "Suppliers", icon: Truck },
-  { to: "/dashboard/admin-boq", label: "BOQ Queue", icon: FileText },
-];
+import { ADMIN_NAV } from "@/lib/admin-nav";
+const NAV = ADMIN_NAV;
 
 type Boq = Record<string, unknown> & { id: string };
 
