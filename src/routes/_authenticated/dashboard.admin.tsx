@@ -5,17 +5,14 @@ import { AppShell } from "@/components/AppShell";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { formatZar, centsToZar } from "@/lib/format";
+import { ADMIN_NAV } from "@/lib/admin-nav";
 
 export const Route = createFileRoute("/_authenticated/dashboard/admin")({
   component: AdminDashboard,
   head: () => ({ meta: [{ title: "Admin · Lum Tech Pro SA" }] }),
 });
 
-const NAV = [
-  { to: "/dashboard/admin", label: "Overview", icon: ShieldCheck },
-  { to: "/dashboard/admin-suppliers", label: "Suppliers", icon: Truck },
-  { to: "/dashboard/admin-boq", label: "BOQ Queue", icon: FileText },
-];
+const NAV = ADMIN_NAV;
 
 function AdminDashboard() {
   const { data } = useQuery({
