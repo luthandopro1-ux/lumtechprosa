@@ -20,6 +20,8 @@ import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { formatZar, centsToZar, zarToCents } from "@/lib/format";
 import { generateVoucherCode, formatVoucherCode } from "@/lib/voucher";
+import { AdminEditProjectDialog } from "@/components/dashboard/AdminEditProjectDialog";
+
 
 export const Route = createFileRoute("/_authenticated/dashboard/projects/$projectId")({
   component: ProjectDetail,
@@ -114,9 +116,12 @@ function ProjectDetail() {
                 Tier {project.tier} · {project.kzn_region} · <span className="uppercase">{project.status}</span>
               </p>
             </div>
-            <Badge variant="outline" className="border-primary/40 text-primary">
-              TradeSafe ID: {project.tradesafe_id ?? "mock-pending"}
-            </Badge>
+            <div className="flex items-center gap-3">
+              {isAdmin && <AdminEditProjectDialog project={project} />}
+              <Badge variant="outline" className="border-primary/40 text-primary">
+                TradeSafe ID: {project.tradesafe_id ?? "mock-pending"}
+              </Badge>
+            </div>
           </div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
