@@ -28,19 +28,20 @@ import { KZN_MUNICIPALITIES } from "@/lib/kzn";
 
 const STATUSES = [
   "draft",
-  "open_for_bids",
-  "in_progress",
+  "funded",
+  "active",
   "completed",
-  "cancelled",
   "disputed",
+  "cancelled",
 ] as const;
+type ProjectStatus = (typeof STATUSES)[number];
 
 const schema = z.object({
   title: z.string().trim().min(1).max(200),
   description: z.string().trim().max(5000).optional().nullable(),
   tier: z.number().int().min(1).max(3),
   kzn_region: z.string().min(1).max(120),
-  status: z.string().min(1).max(40),
+  status: z.enum(STATUSES),
   budget_zar: z.number().min(0).max(1_000_000_000),
   client_fee_zar: z.number().min(0).max(1_000_000_000),
   builder_fee_zar: z.number().min(0).max(1_000_000_000),
