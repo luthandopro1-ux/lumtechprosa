@@ -7,6 +7,8 @@ import {
   Briefcase,
   Package,
   Hammer,
+  AlertTriangle,
+  Settings,
 } from "lucide-react";
 import type { NavItem } from "@/components/AppShell";
 
@@ -15,6 +17,8 @@ export const ADMIN_NAV: NavItem[] = [
   { to: "/dashboard/admin", label: "Overview", icon: ShieldCheck },
   { to: "/dashboard/admin-suppliers", label: "Suppliers", icon: Truck },
   { to: "/dashboard/admin-boq", label: "BOQ Queue", icon: FileText },
+  { to: "/dashboard/admin-disputes", label: "Disputes", icon: AlertTriangle },
+  { to: "/dashboard/admin-settings", label: "Settings", icon: Settings },
   { to: "/dashboard/client", label: "Client view", icon: LayoutDashboard },
   { to: "/dashboard/builder", label: "Builder view", icon: HardHat },
   { to: "/dashboard/professional", label: "Professional view", icon: Briefcase },

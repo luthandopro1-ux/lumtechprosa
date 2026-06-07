@@ -31,6 +31,8 @@ import { Route as AuthenticatedDashboardCalculatorRouteImport } from './routes/_
 import { Route as AuthenticatedDashboardBuilderRouteImport } from './routes/_authenticated/dashboard.builder'
 import { Route as AuthenticatedDashboardArtisanRouteImport } from './routes/_authenticated/dashboard.artisan'
 import { Route as AuthenticatedDashboardAdminSuppliersRouteImport } from './routes/_authenticated/dashboard.admin-suppliers'
+import { Route as AuthenticatedDashboardAdminSettingsRouteImport } from './routes/_authenticated/dashboard.admin-settings'
+import { Route as AuthenticatedDashboardAdminDisputesRouteImport } from './routes/_authenticated/dashboard.admin-disputes'
 import { Route as AuthenticatedDashboardAdminBoqRouteImport } from './routes/_authenticated/dashboard.admin-boq'
 import { Route as AuthenticatedDashboardAdminRouteImport } from './routes/_authenticated/dashboard.admin'
 import { Route as AuthenticatedDashboardProjectsProjectIdRouteImport } from './routes/_authenticated/dashboard.projects.$projectId'
@@ -155,6 +157,18 @@ const AuthenticatedDashboardAdminSuppliersRoute =
     path: '/dashboard/admin-suppliers',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedDashboardAdminSettingsRoute =
+  AuthenticatedDashboardAdminSettingsRouteImport.update({
+    id: '/dashboard/admin-settings',
+    path: '/dashboard/admin-settings',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedDashboardAdminDisputesRoute =
+  AuthenticatedDashboardAdminDisputesRouteImport.update({
+    id: '/dashboard/admin-disputes',
+    path: '/dashboard/admin-disputes',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedDashboardAdminBoqRoute =
   AuthenticatedDashboardAdminBoqRouteImport.update({
     id: '/dashboard/admin-boq',
@@ -201,6 +215,8 @@ export interface FileRoutesByFullPath {
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/admin-boq': typeof AuthenticatedDashboardAdminBoqRoute
+  '/dashboard/admin-disputes': typeof AuthenticatedDashboardAdminDisputesRoute
+  '/dashboard/admin-settings': typeof AuthenticatedDashboardAdminSettingsRoute
   '/dashboard/admin-suppliers': typeof AuthenticatedDashboardAdminSuppliersRoute
   '/dashboard/artisan': typeof AuthenticatedDashboardArtisanRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
@@ -229,6 +245,8 @@ export interface FileRoutesByTo {
   '/services/$slug': typeof ServicesSlugRoute
   '/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/dashboard/admin-boq': typeof AuthenticatedDashboardAdminBoqRoute
+  '/dashboard/admin-disputes': typeof AuthenticatedDashboardAdminDisputesRoute
+  '/dashboard/admin-settings': typeof AuthenticatedDashboardAdminSettingsRoute
   '/dashboard/admin-suppliers': typeof AuthenticatedDashboardAdminSuppliersRoute
   '/dashboard/artisan': typeof AuthenticatedDashboardArtisanRoute
   '/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
@@ -259,6 +277,8 @@ export interface FileRoutesById {
   '/services/$slug': typeof ServicesSlugRoute
   '/_authenticated/dashboard/admin': typeof AuthenticatedDashboardAdminRoute
   '/_authenticated/dashboard/admin-boq': typeof AuthenticatedDashboardAdminBoqRoute
+  '/_authenticated/dashboard/admin-disputes': typeof AuthenticatedDashboardAdminDisputesRoute
+  '/_authenticated/dashboard/admin-settings': typeof AuthenticatedDashboardAdminSettingsRoute
   '/_authenticated/dashboard/admin-suppliers': typeof AuthenticatedDashboardAdminSuppliersRoute
   '/_authenticated/dashboard/artisan': typeof AuthenticatedDashboardArtisanRoute
   '/_authenticated/dashboard/builder': typeof AuthenticatedDashboardBuilderRoute
@@ -289,6 +309,8 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/admin-boq'
+    | '/dashboard/admin-disputes'
+    | '/dashboard/admin-settings'
     | '/dashboard/admin-suppliers'
     | '/dashboard/artisan'
     | '/dashboard/builder'
@@ -317,6 +339,8 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/dashboard/admin'
     | '/dashboard/admin-boq'
+    | '/dashboard/admin-disputes'
+    | '/dashboard/admin-settings'
     | '/dashboard/admin-suppliers'
     | '/dashboard/artisan'
     | '/dashboard/builder'
@@ -346,6 +370,8 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/_authenticated/dashboard/admin'
     | '/_authenticated/dashboard/admin-boq'
+    | '/_authenticated/dashboard/admin-disputes'
+    | '/_authenticated/dashboard/admin-settings'
     | '/_authenticated/dashboard/admin-suppliers'
     | '/_authenticated/dashboard/artisan'
     | '/_authenticated/dashboard/builder'
@@ -532,6 +558,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardAdminSuppliersRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/dashboard/admin-settings': {
+      id: '/_authenticated/dashboard/admin-settings'
+      path: '/dashboard/admin-settings'
+      fullPath: '/dashboard/admin-settings'
+      preLoaderRoute: typeof AuthenticatedDashboardAdminSettingsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/dashboard/admin-disputes': {
+      id: '/_authenticated/dashboard/admin-disputes'
+      path: '/dashboard/admin-disputes'
+      fullPath: '/dashboard/admin-disputes'
+      preLoaderRoute: typeof AuthenticatedDashboardAdminDisputesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/dashboard/admin-boq': {
       id: '/_authenticated/dashboard/admin-boq'
       path: '/dashboard/admin-boq'
@@ -588,6 +628,8 @@ const AuthenticatedDashboardClientRouteWithChildren =
 interface AuthenticatedRouteChildren {
   AuthenticatedDashboardAdminRoute: typeof AuthenticatedDashboardAdminRoute
   AuthenticatedDashboardAdminBoqRoute: typeof AuthenticatedDashboardAdminBoqRoute
+  AuthenticatedDashboardAdminDisputesRoute: typeof AuthenticatedDashboardAdminDisputesRoute
+  AuthenticatedDashboardAdminSettingsRoute: typeof AuthenticatedDashboardAdminSettingsRoute
   AuthenticatedDashboardAdminSuppliersRoute: typeof AuthenticatedDashboardAdminSuppliersRoute
   AuthenticatedDashboardArtisanRoute: typeof AuthenticatedDashboardArtisanRoute
   AuthenticatedDashboardBuilderRoute: typeof AuthenticatedDashboardBuilderRoute
@@ -604,6 +646,10 @@ interface AuthenticatedRouteChildren {
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedDashboardAdminRoute: AuthenticatedDashboardAdminRoute,
   AuthenticatedDashboardAdminBoqRoute: AuthenticatedDashboardAdminBoqRoute,
+  AuthenticatedDashboardAdminDisputesRoute:
+    AuthenticatedDashboardAdminDisputesRoute,
+  AuthenticatedDashboardAdminSettingsRoute:
+    AuthenticatedDashboardAdminSettingsRoute,
   AuthenticatedDashboardAdminSuppliersRoute:
     AuthenticatedDashboardAdminSuppliersRoute,
   AuthenticatedDashboardArtisanRoute: AuthenticatedDashboardArtisanRoute,
@@ -645,13 +691,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
