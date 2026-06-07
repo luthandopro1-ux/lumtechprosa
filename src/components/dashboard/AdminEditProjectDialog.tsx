@@ -85,7 +85,7 @@ export function AdminEditProjectDialog({ project }: { project: ProjectLike }) {
           description: parsed.description || null,
           tier: parsed.tier,
           kzn_region: parsed.kzn_region,
-          status: parsed.status as ProjectLike["status"],
+          status: parsed.status as ProjectStatus,
           budget_cents: zarToCents(parsed.budget_zar),
           client_fee_cents: zarToCents(parsed.client_fee_zar),
           builder_fee_cents: zarToCents(parsed.builder_fee_zar),

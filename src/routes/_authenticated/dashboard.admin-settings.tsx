@@ -117,7 +117,7 @@ function SettingRowEditor({
 
   const save = useMutation({
     mutationFn: async () => {
-      let parsed: unknown;
+      let parsed: any;
       try {
         parsed = JSON.parse(value);
       } catch {
@@ -212,7 +212,7 @@ function NewSettingDialog({ onSaved }: { onSaved: () => void }) {
   const mut = useMutation({
     mutationFn: async () => {
       const parsedKey = keySchema.parse(key);
-      let parsedValue: unknown;
+      let parsedValue: any;
       try {
         parsedValue = JSON.parse(value);
       } catch {
