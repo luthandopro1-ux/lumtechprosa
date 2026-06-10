@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { computeBreakdown } from "@/lib/tiers";
-import { KZN_MUNICIPALITIES } from "@/lib/kzn";
+import { SA_PROVINCES, SA_REGIONS, type SaProvince } from "@/lib/sa-regions";
 import { formatZar, zarToCents } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/dashboard/client/projects/new")({
@@ -35,6 +35,7 @@ function NewProjectWizard() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [budget, setBudget] = useState<string>("");
+  const [province, setProvince] = useState<SaProvince | "">("");
   const [region, setRegion] = useState<string>("");
   const [useInhouse, setUseInhouse] = useState(false);
 
@@ -129,17 +130,39 @@ function NewProjectWizard() {
               />
             </div>
             <div className="space-y-2">
-              <Label>KZN region</Label>
-              <Select value={region} onValueChange={setRegion}>
+              <Label>Province</Label>
+              <Select
+                value={province}
+                onValueChange={(v) => {
+                  setProvince(v as SaProvince);
+                  setRegion("");
+                }}
+              >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select municipality" />
+                  <SelectValue placeholder="Select province" />
                 </SelectTrigger>
                 <SelectContent>
-                  {KZN_MUNICIPALITIES.map((m) => (
-                    <SelectItem key={m} value={m}>
-                      {m}
+                  {SA_PROVINCES.map((p) => (
+                    <SelectItem key={p} value={p}>
+                      {p}
                     </SelectItem>
                   ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label>Municipality / metro</Label>
+              <Select value={region} onValueChange={setRegion} disabled={!province}>
+                <SelectTrigger>
+                  <SelectValue placeholder={province ? "Select municipality" : "Choose a province first"} />
+                </SelectTrigger>
+                <SelectContent>
+                  {province &&
+                    SA_REGIONS[province].map((m) => (
+                      <SelectItem key={m} value={m}>
+                        {m}
+                      </SelectItem>
+                    ))}
                 </SelectContent>
               </Select>
             </div>

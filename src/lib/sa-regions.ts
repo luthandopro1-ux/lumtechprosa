@@ -1,0 +1,100 @@
+// South African provinces and a curated list of municipalities/metros per province.
+// Used by the client "new project" wizard so projects can be located anywhere in SA.
+
+export const SA_PROVINCES = [
+  "Eastern Cape",
+  "Free State",
+  "Gauteng",
+  "KwaZulu-Natal",
+  "Limpopo",
+  "Mpumalanga",
+  "Northern Cape",
+  "North West",
+  "Western Cape",
+] as const;
+
+export type SaProvince = (typeof SA_PROVINCES)[number];
+
+export const SA_REGIONS: Record<SaProvince, string[]> = {
+  "Eastern Cape": [
+    "Nelson Mandela Bay (Gqeberha)",
+    "Buffalo City (East London)",
+    "Makana (Grahamstown)",
+    "Sarah Baartman District",
+    "Amathole District",
+    "OR Tambo District",
+    "Chris Hani District",
+    "Joe Gqabi District",
+    "Alfred Nzo District",
+  ],
+  "Free State": [
+    "Mangaung Metro (Bloemfontein)",
+    "Lejweleputswa District",
+    "Thabo Mofutsanyana District",
+    "Fezile Dabi District",
+    "Xhariep District",
+  ],
+  Gauteng: [
+    "City of Johannesburg",
+    "City of Tshwane (Pretoria)",
+    "Ekurhuleni Metro",
+    "Sedibeng District",
+    "West Rand District",
+  ],
+  "KwaZulu-Natal": [
+    "eThekwini Metropolitan (Durban)",
+    "uMgungundlovu (Pietermaritzburg)",
+    "uMzinyathi",
+    "uThukela",
+    "Amajuba (Newcastle)",
+    "Zululand",
+    "King Cetshwayo (Richards Bay)",
+    "uMkhanyakude",
+    "Harry Gwala",
+    "Ugu",
+    "iLembe (Ballito / KwaDukuza)",
+  ],
+  Limpopo: [
+    "Polokwane",
+    "Capricorn District",
+    "Mopani District",
+    "Vhembe District",
+    "Sekhukhune District",
+    "Waterberg District",
+  ],
+  Mpumalanga: [
+    "Mbombela (Nelspruit)",
+    "Emalahleni (Witbank)",
+    "Gert Sibande District",
+    "Nkangala District",
+    "Ehlanzeni District",
+  ],
+  "Northern Cape": [
+    "Sol Plaatje (Kimberley)",
+    "Frances Baard District",
+    "John Taolo Gaetsewe District",
+    "Namakwa District",
+    "Pixley ka Seme District",
+    "ZF Mgcawu District",
+  ],
+  "North West": [
+    "Rustenburg",
+    "Mahikeng",
+    "Bojanala District",
+    "Dr Kenneth Kaunda District",
+    "Dr Ruth Segomotsi Mompati District",
+    "Ngaka Modiri Molema District",
+  ],
+  "Western Cape": [
+    "City of Cape Town",
+    "Stellenbosch",
+    "Drakenstein (Paarl)",
+    "George",
+    "Knysna",
+    "Cape Winelands District",
+    "Overberg District",
+    "Garden Route District",
+    "West Coast District",
+    "Central Karoo District",
+  ],
+};

@@ -3,6 +3,7 @@ import { Award, Ticket, LayoutDashboard } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import { BadgeCabinet } from "@/components/dashboard/BadgeCabinet";
 import { VoucherWallet } from "@/components/dashboard/VoucherWallet";
+import { UserAttachments } from "@/components/dashboard/UserAttachments";
 import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/_authenticated/dashboard/artisan")({
@@ -22,15 +23,18 @@ function ArtisanDashboard() {
   return (
     <AppShell role="builder" nav={NAV}>
       <h1 className="font-display text-3xl font-bold tracking-tight">Artisan Dashboard</h1>
-      <p className="mt-1 text-sm text-muted-foreground">Your verified skills and active vouchers.</p>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Tradespeople — your verified skills, active vouchers, and job documents.
+      </p>
 
       {user ? (
         <div className="mt-8 space-y-6">
           <BadgeCabinet userId={user.id} />
           <VoucherWallet userId={user.id} />
+          <UserAttachments title="Trade certificates & job documents" />
         </div>
       ) : (
-        <p className="mt-8 text-sm text-muted-foreground">Sign in to view your badges and vouchers.</p>
+        <p className="mt-8 text-sm text-muted-foreground">Sign in to view your badges, vouchers, and attachments.</p>
       )}
     </AppShell>
   );
