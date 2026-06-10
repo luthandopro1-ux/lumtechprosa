@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { computeBreakdown } from "@/lib/tiers";
-import { KZN_MUNICIPALITIES } from "@/lib/kzn";
+import { SA_PROVINCES, SA_REGIONS, type SaProvince } from "@/lib/sa-regions";
 import { formatZar, zarToCents } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/dashboard/client/projects/new")({
