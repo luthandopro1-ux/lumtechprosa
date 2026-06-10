@@ -130,17 +130,39 @@ function NewProjectWizard() {
               />
             </div>
             <div className="space-y-2">
-              <Label>KZN region</Label>
-              <Select value={region} onValueChange={setRegion}>
+              <Label>Province</Label>
+              <Select
+                value={province}
+                onValueChange={(v) => {
+                  setProvince(v as SaProvince);
+                  setRegion("");
+                }}
+              >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select municipality" />
+                  <SelectValue placeholder="Select province" />
                 </SelectTrigger>
                 <SelectContent>
-                  {KZN_MUNICIPALITIES.map((m) => (
-                    <SelectItem key={m} value={m}>
-                      {m}
+                  {SA_PROVINCES.map((p) => (
+                    <SelectItem key={p} value={p}>
+                      {p}
                     </SelectItem>
                   ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label>Municipality / metro</Label>
+              <Select value={region} onValueChange={setRegion} disabled={!province}>
+                <SelectTrigger>
+                  <SelectValue placeholder={province ? "Select municipality" : "Choose a province first"} />
+                </SelectTrigger>
+                <SelectContent>
+                  {province &&
+                    SA_REGIONS[province].map((m) => (
+                      <SelectItem key={m} value={m}>
+                        {m}
+                      </SelectItem>
+                    ))}
                 </SelectContent>
               </Select>
             </div>
