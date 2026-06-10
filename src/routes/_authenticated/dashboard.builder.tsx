@@ -8,11 +8,12 @@ import { EscrowBalanceWidget } from "@/components/dashboard/EscrowBalanceWidget"
 import { VoucherWallet } from "@/components/dashboard/VoucherWallet";
 import { MilestoneTracker } from "@/components/dashboard/MilestoneTracker";
 import { useAuth } from "@/hooks/use-auth";
+import { UserAttachments } from "@/components/dashboard/UserAttachments";
 
 
 export const Route = createFileRoute("/_authenticated/dashboard/builder")({
   component: BuilderDashboard,
-  head: () => ({ meta: [{ title: "Builder Dashboard · Lum Tech Pro SA" }] }),
+  head: () => ({ meta: [{ title: "Contractor Dashboard · Lum Tech Pro SA" }] }),
 });
 
 const NAV = [
@@ -37,8 +38,8 @@ function BuilderDashboard() {
 
   return (
     <AppShell role="builder" nav={NAV}>
-      <h1 className="font-display text-3xl font-bold tracking-tight">Builder Dashboard</h1>
-      <p className="mt-1 text-sm text-muted-foreground">Active builds and open opportunities across KZN.</p>
+      <h1 className="font-display text-3xl font-bold tracking-tight">Contractor Dashboard</h1>
+      <p className="mt-1 text-sm text-muted-foreground">Active builds and open opportunities across South Africa.</p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <Metric icon={HardHat} label="Active builds" value={String(assigned.length)} />
@@ -51,12 +52,13 @@ function BuilderDashboard() {
         {assigned[0] && <MilestoneTracker projectId={assigned[0].id} />}
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <BuilderVoucherWallet />
+        <UserAttachments title="Contractor documents" />
       </div>
 
       <Section title="My active projects" projects={assigned} isLoading={isLoading} empty="No assigned projects yet." />
-      <Section title="Open opportunities in KZN" projects={open} isLoading={isLoading} empty="No open projects right now." />
+      <Section title="Open opportunities" projects={open} isLoading={isLoading} empty="No open projects right now." />
     </AppShell>
   );
 }
