@@ -35,6 +35,7 @@ function NewProjectWizard() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [budget, setBudget] = useState<string>("");
+  const [province, setProvince] = useState<SaProvince | "">("");
   const [region, setRegion] = useState<string>("");
   const [useInhouse, setUseInhouse] = useState(false);
 
